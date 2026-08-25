@@ -1,0 +1,215 @@
+/* Product Card */
+.product-card {
+  background-color: var(--color-bg-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-xl);
+  padding: var(--spacing-6);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  transition: all var(--transition-normal);
+  position: relative;
+  overflow: hidden;
+}
+
+.product-card:hover {
+  border-color: var(--color-accent);
+  box-shadow: var(--shadow-card-hover);
+  transform: translateY(-4px);
+}
+
+.product-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--color-accent), #60a5fa);
+  opacity: 0;
+  transition: opacity var(--transition-normal);
+}
+
+.product-card:hover::before {
+  opacity: 1;
+}
+
+.product-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: var(--spacing-4);
+}
+
+.product-card-badges {
+  display: flex;
+  gap: var(--spacing-2);
+  flex-wrap: wrap;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 4px 8px;
+  border-radius: 4px;
+}
+
+.badge.featured {
+  background-color: rgba(59, 130, 246, 0.1);
+  color: var(--color-accent);
+}
+
+.badge.new {
+  background-color: rgba(16, 185, 129, 0.1);
+  color: var(--color-success);
+}
+
+.badge.warning {
+  background-color: rgba(245, 158, 11, 0.1);
+  color: var(--color-warning);
+}
+
+.product-brand {
+  font-size: 0.65rem;
+  font-weight: 700;
+  color: var(--color-text-muted);
+  letter-spacing: 0.1em;
+}
+
+.product-card-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.product-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--color-text-main);
+  margin-bottom: var(--spacing-2);
+}
+
+.product-desc {
+  font-size: 0.875rem;
+  color: var(--color-text-muted);
+  line-height: 1.6;
+  margin-bottom: var(--spacing-6);
+  flex: 1;
+}
+
+.product-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-2);
+  margin-bottom: var(--spacing-6);
+}
+
+.tag {
+  font-size: 0.75rem;
+  color: var(--color-text-muted);
+  background-color: var(--color-bg-body);
+  border: 1px solid var(--color-border);
+  padding: 2px 8px;
+  border-radius: 12px;
+}
+
+.product-card-footer {
+  margin-top: auto;
+  border-top: 1px solid var(--color-border-subtle);
+  padding-top: var(--spacing-4);
+}
+
+.btn-explore {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-2);
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--color-primary);
+  transition: color var(--transition-fast);
+}
+
+.btn-explore:hover {
+  color: var(--color-accent);
+}
+
+.btn-explore svg {
+  transition: transform var(--transition-fast);
+}
+
+.product-card:hover .btn-explore svg {
+  transform: translateX(4px);
+}
+
+/* Filter Bar */
+.filter-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-2);
+}
+
+.filter-btn {
+  padding: 6px 16px;
+  border-radius: 20px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--color-text-muted);
+  background-color: var(--color-bg-surface);
+  border: 1px solid var(--color-border);
+  transition: all var(--transition-fast);
+}
+
+.filter-btn:hover {
+  background-color: var(--color-bg-card-hover);
+  color: var(--color-text-main);
+}
+
+.filter-btn.active {
+  background-color: var(--color-primary);
+  color: white;
+  border-color: var(--color-primary);
+}
+
+/* Buttons (Generic) */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-2);
+  padding: 10px 24px;
+  background-color: var(--color-primary);
+  color: white;
+  font-weight: 600;
+  font-size: 0.9rem;
+  border-radius: var(--radius-md);
+  transition: background-color var(--transition-fast);
+}
+
+.btn-primary:hover {
+  background-color: var(--color-primary-hover);
+}
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-2);
+  padding: 10px 24px;
+  background-color: var(--color-bg-surface);
+  color: var(--color-text-main);
+  font-weight: 600;
+  font-size: 0.9rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  transition: all var(--transition-fast);
+}
+
+.btn-secondary:hover {
+  background-color: var(--color-bg-card-hover);
+  border-color: var(--color-text-muted);
+}
