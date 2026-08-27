@@ -33,7 +33,7 @@ export default function SearchResultsPage() {
     
     const query = currentQuery.toLowerCase();
     return product.name.toLowerCase().includes(query) || 
-           product.description.toLowerCase().includes(query) ||
+           product.shortDescription.toLowerCase().includes(query) ||
            product.tags.some(t => t.toLowerCase().includes(query));
   });
 

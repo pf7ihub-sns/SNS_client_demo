@@ -71,8 +71,8 @@ export default function LoginPage() {
         <div className="login-left-brand">
           <div className="brand-content-center">
             <img src="/logo.png" alt="SNS Square Logo" className="brand-logo" />
-            <h1 className="brand-title">SNS Square <br/> Solution Hub</h1>
-            <p className="brand-subtitle">Let's build something great together</p>
+            <h1 className="brand-title">SNS Square Solution Hub</h1>
+            <p className="brand-subtitle">Explore Enterprise Solutions. Experience Innovation.</p>
             
             <div className="auth-tabs">
               <button 

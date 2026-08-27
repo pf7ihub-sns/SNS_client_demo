@@ -26,7 +26,7 @@ export default function DomainCatalogPage() {
   const filteredProducts = domainProducts.filter(product => {
     // 1. Search filter
     const matchesSearch = product.name.toLowerCase().includes(searchQuery.toLowerCase()) || 
-                          product.description.toLowerCase().includes(searchQuery.toLowerCase()) ||
+                          product.shortDescription.toLowerCase().includes(searchQuery.toLowerCase()) ||
                           product.tags.some(t => t.toLowerCase().includes(searchQuery.toLowerCase()));
     
     if (!matchesSearch) return false;

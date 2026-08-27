@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react';
-
 import { useParams, Navigate, useLocation } from 'react-router-dom';
 import { PlayCircle, ExternalLink, CheckCircle2 } from 'lucide-react';
 import { products } from '../data/mockData';
@@ -19,7 +18,6 @@ export default function ProductDetailPage() {
   const [restrictedResource, setRestrictedResource] = useState<string | null>(null);
   
   const location = useLocation();
-
 
   useEffect(() => {
     if (location.state?.scrollTo === 'demo-video') {
@@ -52,18 +50,49 @@ export default function ProductDetailPage() {
 
   return (
     <div className="product-showcase-page">
-      {/* 1. HERO SECTION */}
+      {/* 1. PRODUCT HEADER */}
       <section className="showcase-hero">
         <div className="showcase-hero-content">
           <div className="showcase-category">{product.domainId.toUpperCase()} / {product.category.toUpperCase()}</div>
           <h1 className="showcase-title">{product.name}</h1>
           <p className="showcase-short-desc">{product.shortDescription}</p>
-          <p className="showcase-long-desc">{product.description}</p>
           
-
+          <div className="closing-actions" style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap', marginTop: '2rem' }}>
+            {product.demoUrl && (
+              <button onClick={handleWatchDemo} className="btn-primary" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', gap: '8px', padding: '0.75rem 1.5rem', borderRadius: '6px', backgroundColor: '#2563eb', color: 'white', border: 'none', cursor: 'pointer', fontWeight: 500 }}>
+                <PlayCircle size={18} />
+                Watch Demo Video {!isInternal && <span style={{ fontSize: '10px', marginLeft: '4px' }}>🔒</span>}
+              </button>
+            )}
+            {product.siteUrl ? (
+              <button onClick={(e) => {
+                if (!isInternal) {
+                  e.preventDefault();
+                  setRestrictedResource('Live Demo');
+                } else {
+                  window.open(product.siteUrl, '_blank', 'noopener,noreferrer');
+                }
+              }} className="btn-secondary-light" style={{ display: 'flex', alignItems: 'center', gap: '8px', padding: '0.75rem 1.5rem', borderRadius: '6px', backgroundColor: 'transparent', color: 'var(--text-primary)', border: '1px solid var(--border-color)', cursor: 'pointer', fontWeight: 500 }}>
+                Visit Website <ExternalLink size={18} /> {!isInternal && <span style={{ fontSize: '10px', marginLeft: '4px' }}>🔒</span>}
+              </button>
+            ) : (
+              <button className="btn-secondary-light" onClick={() => !isInternal && setRestrictedResource('Live Demo')} style={{ display: 'flex', alignItems: 'center', gap: '8px', padding: '0.75rem 1.5rem', borderRadius: '6px', backgroundColor: 'transparent', color: 'var(--text-primary)', border: '1px solid var(--border-color)', cursor: 'pointer', fontWeight: 500 }}>
+                Visit Website <ExternalLink size={18} /> {!isInternal && <span style={{ fontSize: '10px', marginLeft: '4px' }}>🔒</span>}
+              </button>
+            )}
+            {product.workflowSteps && product.workflowSteps.length > 0 && (
+              <button 
+                className="btn-secondary-light" 
+                onClick={handleViewWorkflow}
+                style={{ display: 'flex', alignItems: 'center', gap: '8px', padding: '0.75rem 1.5rem', borderRadius: '6px', backgroundColor: 'transparent', color: 'var(--text-primary)', border: '1px solid var(--border-color)', cursor: 'pointer', fontWeight: 500 }}
+              >
+                View Workflow {!isInternal && <span style={{ fontSize: '10px', marginLeft: '4px' }}>🔒</span>}
+              </button>
+            )}
+          </div>
         </div>
         
-        <div className="showcase-hero-visual">
+        <div className="showcase-hero-visual" style={{ marginTop: '2rem' }}>
           {product.heroImageUrl ? (
              <img src={product.heroImageUrl} alt={`${product.name} Interface`} className="hero-product-image" />
           ) : (
@@ -74,126 +103,52 @@ export default function ProductDetailPage() {
         </div>
       </section>
 
-      {/* 2. CHALLENGE / EDITORIAL SECTION */}
-      <section className="showcase-editorial">
+      {/* 2. WHAT IS IT / WHAT IS IT ABOUT? */}
+      <section className="showcase-editorial" style={{ paddingTop: '2rem', paddingBottom: '1rem' }}>
         <div className="editorial-container">
           <div className="editorial-title-col">
-            <h2>The Modern {product.category} Challenge</h2>
+            <h2>What is it / What is it about?</h2>
           </div>
           <div className="editorial-text-col">
-            <p className="editorial-problem">{product.problem}</p>
-            <p className="editorial-solution">{product.solution}</p>
+            <p className="editorial-problem" style={{ fontSize: '1.1rem', lineHeight: '1.6', color: 'var(--text-secondary)', whiteSpace: 'pre-wrap' }}>
+              {product.useCase}
+            </p>
           </div>
         </div>
       </section>
 
-      {/* 3. PRODUCT EXPERIENCE (VISUAL STORYTELLING) */}
-      {product.visualSections && product.visualSections.length > 0 && (
-        <section className="showcase-storytelling">
-          <div className="storytelling-header">
-            <h2>See {product.name} in Action</h2>
+      {/* 3. DESCRIPTION */}
+      <section className="showcase-editorial" style={{ paddingTop: '1rem', paddingBottom: '2rem' }}>
+        <div className="editorial-container">
+          <div className="editorial-title-col">
+            <h2>Description</h2>
           </div>
-          
-          <div className="storytelling-sections">
-            {product.visualSections.map((section, idx) => (
-              <div key={idx} className={`story-section layout-${section.layout}`}>
-                <div className="story-content">
-                  <h3>{section.title}</h3>
-                  <p>{section.description}</p>
-                </div>
-                <div className="story-visual">
-                  {section.imageUrl ? (
-                    <img src={section.imageUrl} alt={section.title} className="story-image" />
-                  ) : (
-                    <div className="story-placeholder">
-                      <span>[ Product UI: {section.title} ]</span>
-                    </div>
-                  )}
-                </div>
-              </div>
-            ))}
+          <div className="editorial-text-col">
+            <ul style={{ fontSize: '1.1rem', lineHeight: '1.8', color: 'var(--text-secondary)', paddingLeft: '1.5rem', margin: 0 }}>
+              {product.descriptionPoints.map((point, idx) => (
+                <li key={idx} style={{ marginBottom: '0.5rem' }}>{point}</li>
+              ))}
+            </ul>
           </div>
-        </section>
-      )}
+        </div>
+      </section>
 
       {/* 4. KEY CAPABILITIES */}
-      <section className="showcase-capabilities">
+      <section className="showcase-capabilities" style={{ paddingTop: '2rem', paddingBottom: '3rem' }}>
         <div className="section-container">
-          <h2 className="section-title">Key Capabilities</h2>
-          <div className="capabilities-grid-compact">
-            {product.capabilities.map((cap, idx) => (
-              <div key={idx} className="capability-card-compact">
-                <CheckCircle2 size={20} className="text-accent" />
-                <div>
-                  <h4 className="cap-title">{cap.title}</h4>
-                  <p className="cap-desc">{cap.description}</p>
-                </div>
+          <h2 className="section-title" style={{ textAlign: 'center', marginBottom: '2rem' }}>Key Capabilities</h2>
+          <div className="capabilities-grid-compact" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '1.5rem', maxWidth: '1000px', margin: '0 auto' }}>
+            {product.keyCapabilities.map((cap, idx) => (
+              <div key={idx} className="capability-card-compact" style={{ display: 'flex', alignItems: 'center', gap: '12px', padding: '1.5rem', backgroundColor: '#ffffff', borderRadius: '12px', border: '1px solid #e2e8f0', boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)', transition: 'transform 0.2s, box-shadow 0.2s' }}>
+                <CheckCircle2 size={20} className="text-accent" style={{ flexShrink: 0 }} />
+                <h4 className="cap-title" style={{ margin: 0, fontSize: '0.95rem', fontWeight: 500, color: 'var(--text-primary)' }}>{cap}</h4>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* 5. OPERATIONAL WORKFLOW (Moved to Modal) */}
 
-
-
-
-
-      {/* 8. BUSINESS VALUE & CLOSING CTA */}
-      <section className="showcase-closing">
-        <div className="closing-container">
-          <h2 className="closing-title">Built for Faster, Smarter {product.domainId.charAt(0).toUpperCase() + product.domainId.slice(1)}</h2>
-          
-          {product.businessOutcomes && (
-            <div className="business-outcomes-grid">
-              {product.businessOutcomes.map((outcome, idx) => (
-                <div key={idx} className="outcome-card">
-                  {outcome.metric && <span className="outcome-metric">{outcome.metric}</span>}
-                  <span className="outcome-label">{outcome.label}</span>
-                </div>
-              ))}
-            </div>
-          )}
-
-          <div className="closing-cta-box">
-            <h3>Ready to transform your operations?</h3>
-            <p>See how {product.name} can help your organization mitigate risk and maintain continuous compliance.</p>
-            <div className="closing-actions">
-              {product.demoUrl && (
-                <button onClick={handleWatchDemo} className="btn-primary" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', gap: '8px' }}>
-                  <PlayCircle size={18} />
-                  Watch Demo Video {!isInternal && <span style={{ fontSize: '10px', marginLeft: '4px' }}>🔒</span>}
-                </button>
-              )}
-              {product.siteUrl ? (
-                <button onClick={(e) => {
-                  if (!isInternal) {
-                    e.preventDefault();
-                    setRestrictedResource('Live Demo');
-                  } else {
-                    window.open(product.siteUrl, '_blank', 'noopener,noreferrer');
-                  }
-                }} className="btn-secondary-light" style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                  Visit Website <ExternalLink size={18} /> {!isInternal && <span style={{ fontSize: '10px', marginLeft: '4px' }}>🔒</span>}
-                </button>
-              ) : (
-                <button className="btn-secondary-light" onClick={() => !isInternal && setRestrictedResource('Live Demo')} style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                  Visit Website <ExternalLink size={18} /> {!isInternal && <span style={{ fontSize: '10px', marginLeft: '4px' }}>🔒</span>}
-                </button>
-              )}
-              {product.workflowSteps && product.workflowSteps.length > 0 && (
-                <button 
-                  className="btn-secondary-light" 
-                  onClick={handleViewWorkflow}
-                >
-                  View Workflow {!isInternal && <span style={{ fontSize: '10px', marginLeft: '4px' }}>🔒</span>}
-                </button>
-              )}
-            </div>
-          </div>
-        </div>
-      </section>
 
       {/* WORKFLOW MODAL */}
       <WorkflowModal
@@ -201,7 +156,7 @@ export default function ProductDetailPage() {
         onClose={() => setIsWorkflowModalOpen(false)}
         productName={product.name}
         workflowImageUrl={product.workflowImageUrl}
-        workflowSteps={product.workflowSteps}
+        workflowSteps={product.workflowSteps || []}
       />
 
       {/* VIDEO MODAL */}
