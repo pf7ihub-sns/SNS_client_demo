@@ -1,8 +1,12 @@
-import { useState } from 'react';
-import { createPortal } from 'react-dom';
-import { useParams, Navigate } from 'react-router-dom';
-import { PlayCircle, ExternalLink, ArrowRight, CheckCircle2, X } from 'lucide-react';
+import { useState, useEffect } from 'react';
+
+import { useParams, Navigate, useLocation } from 'react-router-dom';
+import { PlayCircle, ExternalLink, CheckCircle2 } from 'lucide-react';
 import { products } from '../data/mockData';
+import { useAuth } from '../context/AuthContext';
+import RestrictedAccessModal from '../components/auth/RestrictedAccessModal';
+import DemoVideoModal from '../components/ui/DemoVideoModal';
+import WorkflowModal from '../components/ui/WorkflowModal';
 import './pages.css';
 
 export default function ProductDetailPage() {
@@ -10,10 +14,41 @@ export default function ProductDetailPage() {
   const product = products.find((p) => p.slug === productSlug);
   const [isWorkflowModalOpen, setIsWorkflowModalOpen] = useState(false);
   const [isVideoModalOpen, setIsVideoModalOpen] = useState(false);
+  
+  const { isInternal } = useAuth();
+  const [restrictedResource, setRestrictedResource] = useState<string | null>(null);
+  
+  const location = useLocation();
+
+
+  useEffect(() => {
+    if (location.state?.scrollTo === 'demo-video') {
+      if (isInternal) {
+        setIsVideoModalOpen(true);
+      }
+      window.history.replaceState({}, document.title);
+    }
+  }, [location.state, isInternal]);
 
   if (!product) {
     return <Navigate to="/" replace />;
   }
+
+  const handleWatchDemo = () => {
+    if (isInternal) {
+      setIsVideoModalOpen(true);
+    } else {
+      setRestrictedResource('Demo Video');
+    }
+  };
+
+  const handleViewWorkflow = () => {
+    if (isInternal) {
+      setIsWorkflowModalOpen(true);
+    } else {
+      setRestrictedResource('Detailed Workflow');
+    }
+  };
 
   return (
     <div className="product-showcase-page">
@@ -126,26 +161,33 @@ export default function ProductDetailPage() {
             <p>See how {product.name} can help your organization mitigate risk and maintain continuous compliance.</p>
             <div className="closing-actions">
               {product.demoUrl && (
-                <button onClick={() => setIsVideoModalOpen(true)} className="btn-primary" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', gap: '8px' }}>
+                <button onClick={handleWatchDemo} className="btn-primary" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', gap: '8px' }}>
                   <PlayCircle size={18} />
-                  Watch Demo Video
+                  Watch Demo Video {!isInternal && <span style={{ fontSize: '10px', marginLeft: '4px' }}>🔒</span>}
                 </button>
               )}
               {product.siteUrl ? (
-                <a href={product.siteUrl} target="_blank" rel="noopener noreferrer" className="btn-secondary-light" style={{ textDecoration: 'none' }}>
-                  Visit Website <ExternalLink size={18} />
-                </a>
+                <button onClick={(e) => {
+                  if (!isInternal) {
+                    e.preventDefault();
+                    setRestrictedResource('Live Demo');
+                  } else {
+                    window.open(product.siteUrl, '_blank', 'noopener,noreferrer');
+                  }
+                }} className="btn-secondary-light" style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                  Visit Website <ExternalLink size={18} /> {!isInternal && <span style={{ fontSize: '10px', marginLeft: '4px' }}>🔒</span>}
+                </button>
               ) : (
-                <button className="btn-secondary-light">
-                  Visit Website <ExternalLink size={18} />
+                <button className="btn-secondary-light" onClick={() => !isInternal && setRestrictedResource('Live Demo')} style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                  Visit Website <ExternalLink size={18} /> {!isInternal && <span style={{ fontSize: '10px', marginLeft: '4px' }}>🔒</span>}
                 </button>
               )}
               {product.workflowSteps && product.workflowSteps.length > 0 && (
                 <button 
                   className="btn-secondary-light" 
-                  onClick={() => setIsWorkflowModalOpen(true)}
+                  onClick={handleViewWorkflow}
                 >
-                  View Workflow
+                  View Workflow {!isInternal && <span style={{ fontSize: '10px', marginLeft: '4px' }}>🔒</span>}
                 </button>
               )}
             </div>
@@ -154,57 +196,29 @@ export default function ProductDetailPage() {
       </section>
 
       {/* WORKFLOW MODAL */}
-      {isWorkflowModalOpen && typeof document !== 'undefined' && createPortal(
-        <div className="modal-overlay" onClick={() => setIsWorkflowModalOpen(false)} style={{ zIndex: 99999, padding: 0, position: 'fixed', top: 0, left: 0, right: 0, bottom: 0, display: 'flex', justifyContent: 'center', alignItems: 'center', background: 'rgba(0,0,0,0.9)' }}>
-          <div className="modal-content" onClick={e => e.stopPropagation()} style={{ width: '100vw', height: '100vh', display: 'flex', justifyContent: 'center', alignItems: 'center', position: 'relative' }}>
-            <button className="modal-close" onClick={() => setIsWorkflowModalOpen(false)} style={{ position: 'absolute', top: '24px', right: '32px', background: '#064ee3', color: 'white', border: 'none', cursor: 'pointer', padding: '12px 20px', borderRadius: '8px', zIndex: 100000, display: 'flex', alignItems: 'center', gap: '8px', fontWeight: 600, boxShadow: '0 4px 12px rgba(0,0,0,0.2)' }}>
-              <X size={20} /> Close Workflow
-            </button>
-            {product.workflowImageUrl ? (
-              <img 
-                src={product.workflowImageUrl} 
-                alt={`${product.name} Workflow`} 
-                style={{ maxWidth: '90vw', maxHeight: '90vh', objectFit: 'contain', borderRadius: '8px', boxShadow: '0 0 40px rgba(0,0,0,0.5)', background: 'white' }} 
-              />
-            ) : (
-              <div className="workflow-diagram-visual" style={{ padding: '40px', width: '100%', maxWidth: '1200px', margin: 'auto', background: 'white', borderRadius: '12px' }}>
-                <h2 style={{ marginBottom: '40px', textAlign: 'center' }}>Operational Workflow</h2>
-                {product.workflowSteps.map((step, idx) => (
-                  <div key={idx} className="workflow-node-wrapper">
-                    <div className="workflow-node">
-                      <span className="node-icon">{idx + 1}</span>
-                      <span className="node-text">{step}</span>
-                    </div>
-                    {idx < product.workflowSteps.length - 1 && (
-                      <div className="workflow-arrow">↓</div>
-                    )}
-                  </div>
-                ))}
-              </div>
-            )}
-          </div>
-        </div>,
-        document.body
-      )}
+      <WorkflowModal
+        isOpen={isWorkflowModalOpen}
+        onClose={() => setIsWorkflowModalOpen(false)}
+        productName={product.name}
+        workflowImageUrl={product.workflowImageUrl}
+        workflowSteps={product.workflowSteps}
+      />
 
       {/* VIDEO MODAL */}
-      {isVideoModalOpen && typeof document !== 'undefined' && createPortal(
-        <div className="modal-overlay" onClick={() => setIsVideoModalOpen(false)} style={{ zIndex: 99999, padding: 0, position: 'fixed', top: 0, left: 0, right: 0, bottom: 0, display: 'flex', justifyContent: 'center', alignItems: 'center', background: 'rgba(0,0,0,0.9)' }}>
-          <div className="modal-content" onClick={e => e.stopPropagation()} style={{ width: '100vw', height: '100vh', display: 'flex', justifyContent: 'center', alignItems: 'center', position: 'relative' }}>
-            <button className="modal-close" onClick={() => setIsVideoModalOpen(false)} style={{ position: 'absolute', top: '24px', right: '32px', background: '#064ee3', color: 'white', border: 'none', cursor: 'pointer', padding: '12px 20px', borderRadius: '8px', zIndex: 100000, display: 'flex', alignItems: 'center', gap: '8px', fontWeight: 600, boxShadow: '0 4px 12px rgba(0,0,0,0.2)' }}>
-              <X size={20} /> Close Video
-            </button>
-            <video 
-              src={product.demoUrl} 
-              autoPlay 
-              controls 
-              style={{ maxWidth: '90vw', maxHeight: '90vh', width: '100%', borderRadius: '8px', boxShadow: '0 0 40px rgba(0,0,0,0.5)', background: 'black' }} 
-            />
-          </div>
-        </div>,
-        document.body
-      )}
-
+      <DemoVideoModal 
+        isOpen={isVideoModalOpen} 
+        onClose={() => setIsVideoModalOpen(false)} 
+        title={product.name} 
+        videoUrl={product.demoUrl || ''} 
+        provider={product.demoUrl?.includes('drive.google.com') ? 'google-drive' : 'native'} 
+      />
+      
+      {/* RESTRICTED ACCESS MODAL */}
+      <RestrictedAccessModal 
+        isOpen={!!restrictedResource} 
+        onClose={() => setRestrictedResource(null)} 
+        resourceName={restrictedResource || undefined}
+      />
     </div>
   );
 }

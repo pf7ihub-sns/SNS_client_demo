@@ -27,7 +27,7 @@ export const domains: Domain[] = [
   },
   {
     id: 'security',
-    name: 'security',
+    name: 'Security',
     description: 'Enterprise-grade Security Solutions to protect your critical assets.',
     iconName: 'Lock',
     featured: true,
@@ -51,19 +51,19 @@ export const products: Product[] = [
     technologies: [],
     problem: 'Traditional Security Operations Centers are overwhelmed by a high volume of alerts and false positives, leading to delayed response times and analyst burnout.',
     solution: 'AI SOC – SOC Intelligence automates security operations with SIEM-first alert investigation, AI-driven evidence analysis, and connector-based response execution.',
-    heroImageUrl: 'https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&q=80&w=2000',
+    heroImageUrl: '/images/soc_1.jpeg',
     visualSections: [
       {
         title: 'SIEM-First Alert Investigation',
         description: 'Automatically ingest and classify alerts from your existing SIEM.',
         layout: 'image-right',
-        imageUrl: 'https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&q=80&w=1000'
+        imageUrl: '/images/soc_2.jpeg'
       },
       {
         title: 'AI-Driven Evidence Analysis',
         description: 'Advanced models analyze evidence to assess risk.',
         layout: 'image-left',
-        imageUrl: 'https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&q=80&w=1000'
+        imageUrl: '/images/soc_3.jpeg'
       }
     ],
     businessOutcomes: [
@@ -96,8 +96,8 @@ export const products: Product[] = [
     ],
     workflowImageUrl: '/images/workflow_soc.png',
     screenshots: [],
-    demoUrl: '/videos/ai_soc.mov',
-    siteUrl: 'https://recons-gamma.vercel.app/'
+    demoUrl: 'https://drive.google.com/file/d/1mdJbnFd8pH0rMzOpaETZ4oXZ4eKHKXVl/preview',
+    siteUrl: 'https://secop.snssquare.com'
   },
   {
     id: 'comp-06',
@@ -157,8 +157,8 @@ export const products: Product[] = [
     ],
     workflowImageUrl: '/images/workflow_tisax.png',
     screenshots: [],
-    demoUrl: '/videos/tisax_dashboard.mov',
-    siteUrl: '#'
+    demoUrl: 'https://drive.google.com/file/d/12O-BNhJQT0J9koPXdVWisPKAiOfvy-qr/preview',
+    siteUrl: 'https://comtisax.snssquare.com'
   },
   {
     id: 'comp-07',
@@ -215,8 +215,8 @@ export const products: Product[] = [
     ],
     workflowImageUrl: '/images/workflow_training.png',
     screenshots: [],
-    demoUrl: '/videos/grc_training.mov',
-    siteUrl: '#'
+    demoUrl: 'https://drive.google.com/file/d/1Lb4zh3G6XW6n2izEZptt8dEBVMOf7-1P/preview',
+    siteUrl: 'https://sectraining.snssquare.com'
   },
   {
     id: 'comp-08',
@@ -275,7 +275,7 @@ export const products: Product[] = [
     ],
     workflowImageUrl: '/images/workflow_compliance.png',
     screenshots: [],
-    demoUrl: '/videos/compliance_management.mov',
-    siteUrl: '#'
+    demoUrl: 'https://drive.google.com/file/d/14nZGlCmOAXRibNT7cyh7L9fIaLSAwqwS/preview',
+    siteUrl: 'https://comgrcmanagement.snssquare.com'
   }
 ];

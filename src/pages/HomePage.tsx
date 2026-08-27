@@ -1,8 +1,19 @@
-import { Link } from 'react-router-dom';
+import { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import { Search, ArrowRight, ShieldCheck, Lock } from 'lucide-react';
 import './pages.css';
 
 export default function HomePage() {
+  const [searchQuery, setSearchQuery] = useState('');
+  const navigate = useNavigate();
+
+  const handleSearch = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (searchQuery.trim()) {
+      navigate(`/search?q=${encodeURIComponent(searchQuery.trim())}`);
+    }
+  };
+
   return (
     <div className="home-page">
       <section className="hero-section">
@@ -17,11 +28,16 @@ export default function HomePage() {
           </p>
 
           <div className="hero-search-container">
-            <div className="hero-search">
+            <form className="hero-search" onSubmit={handleSearch}>
               <Search size={20} className="search-icon" />
-              <input type="text" placeholder="Search for products, domains, or capabilities..." />
-              <button className="btn-primary">Search</button>
-            </div>
+              <input 
+                type="text" 
+                placeholder="Search for products, domains, or capabilities..." 
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+              />
+              <button type="submit" className="btn-primary">Search</button>
+            </form>
           </div>
         </div>
 

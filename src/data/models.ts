@@ -44,7 +44,7 @@ export interface Product {
   videoUrl?: string;
   problem: string;
   solution: string;
-  businessValue: string;
+  businessValue?: string;
   capabilities: Capability[];
   workflowSteps: string[];
   workflowImageUrl?: string;

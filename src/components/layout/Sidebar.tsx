@@ -21,6 +21,7 @@ export default function Sidebar() {
       <aside className={`sidebar ${isMobileOpen ? 'mobile-open' : ''}`}>
         <div className="sidebar-header">
           <Link to="/" className="brand-logo" onClick={() => setIsMobileOpen(false)}>
+            <img src="/logo.png" alt="SNS Square Logo" className="site-logo" style={{ maxHeight: '40px', width: 'auto' }} />
             <div className="brand-text">
               <h2>SNS Square</h2>
               <span>Solution Hub</span>
@@ -67,7 +68,7 @@ export default function Sidebar() {
         </nav>
 
         <div className="sidebar-footer">
-          <div className="version-info">v2.0.0-beta</div>
+          <div className="version-info">v1.0.0</div>
         </div>
       </aside>
 

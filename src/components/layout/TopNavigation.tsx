@@ -1,10 +1,37 @@
-import { useLocation, Link } from 'react-router-dom';
-import { ChevronRight, Search, Bell, User } from 'lucide-react';
+import { useState, useRef, useEffect } from 'react';
+import { useLocation, Link, useNavigate } from 'react-router-dom';
+import { ChevronRight, Search, Bell, LogOut, Presentation, Settings } from 'lucide-react';
 import { products, domains } from '../../data/mockData';
+import { useAuth } from '../../context/AuthContext';
 
 export default function TopNavigation() {
   const location = useLocation();
+  const navigate = useNavigate();
+  const { isAuthenticated, user, logout } = useAuth();
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const [globalSearchQuery, setGlobalSearchQuery] = useState('');
+  const dropdownRef = useRef<HTMLDivElement>(null);
+  
   const pathParts = location.pathname.split('/').filter(Boolean);
+
+  const handleGlobalSearch = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (globalSearchQuery.trim()) {
+      navigate(`/search?q=${encodeURIComponent(globalSearchQuery.trim())}`);
+      setGlobalSearchQuery('');
+    }
+  };
+
+  // Close dropdown when clicking outside
+  useEffect(() => {
+    function handleClickOutside(event: MouseEvent) {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+        setIsDropdownOpen(false);
+      }
+    }
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
 
   // Generate breadcrumbs based on path
   const renderBreadcrumbs = () => {
@@ -49,6 +76,12 @@ export default function TopNavigation() {
     return <div className="breadcrumbs">{breadcrumbs}</div>;
   };
 
+  const handleLogout = () => {
+    logout();
+    setIsDropdownOpen(false);
+    navigate('/login');
+  };
+
   return (
     <header className="top-nav">
       <div className="top-nav-left">
@@ -56,23 +89,91 @@ export default function TopNavigation() {
       </div>
       
       <div className="top-nav-right">
-        <div className="global-search">
+        <form className="global-search" onSubmit={handleGlobalSearch}>
           <Search size={18} className="search-icon" />
-          <input type="text" placeholder="Quick search..." className="search-input" />
+          <input 
+            type="text" 
+            placeholder="Quick search..." 
+            className="search-input" 
+            value={globalSearchQuery}
+            onChange={(e) => setGlobalSearchQuery(e.target.value)}
+          />
+          <button type="submit" style={{ display: 'none' }}>Search</button>
           <span className="search-shortcut">⌘K</span>
-        </div>
+        </form>
         
         <button className="icon-button">
           <Bell size={20} />
           <span className="notification-dot"></span>
         </button>
         
-        <button className="profile-button">
-          <div className="avatar">
-            <User size={18} />
+        {isAuthenticated ? (
+          <div className="profile-menu-container" ref={dropdownRef} style={{ position: 'relative' }}>
+            <button className="profile-button" onClick={() => setIsDropdownOpen(!isDropdownOpen)}>
+              <div className="avatar" style={{ background: '#0ea5e9', color: 'white' }}>
+                {user?.name.charAt(0) || 'U'}
+              </div>
+              <span>{user?.name || 'Internal User'} ▼</span>
+            </button>
+            
+            {isDropdownOpen && (
+              <div className="profile-dropdown" style={{
+                position: 'absolute',
+                top: 'calc(100% + 8px)',
+                right: 0,
+                width: '240px',
+                background: 'white',
+                borderRadius: '8px',
+                boxShadow: '0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1)',
+                border: '1px solid #e2e8f0',
+                zIndex: 50,
+                overflow: 'hidden'
+              }}>
+                <div style={{ padding: '16px', borderBottom: '1px solid #e2e8f0' }}>
+                  <p style={{ margin: 0, fontWeight: 600, color: '#0f172a' }}>{user?.name}</p>
+                  <p style={{ margin: '4px 0 0 0', fontSize: '12px', color: '#64748b' }}>{user?.email}</p>
+                  {user?.role === 'internal' ? (
+                    <div style={{ display: 'inline-block', marginTop: '8px', padding: '2px 8px', background: '#e0f2fe', color: '#0284c7', borderRadius: '12px', fontSize: '11px', fontWeight: 600 }}>
+                      Internal Access
+                    </div>
+                  ) : (
+                    <div style={{ display: 'inline-block', marginTop: '8px', padding: '2px 8px', background: '#f1f5f9', color: '#64748b', borderRadius: '12px', fontSize: '11px', fontWeight: 600 }}>
+                      Guest Access
+                    </div>
+                  )}
+                </div>
+                <div style={{ padding: '8px' }}>
+                  <button className="dropdown-item" style={{ width: '100%', display: 'flex', alignItems: 'center', gap: '8px', padding: '8px 12px', border: 'none', background: 'transparent', cursor: 'pointer', textAlign: 'left', color: '#334155', borderRadius: '6px' }}>
+                    <Settings size={16} /> Profile Settings
+                  </button>
+                  <button className="dropdown-item" style={{ width: '100%', display: 'flex', alignItems: 'center', gap: '8px', padding: '8px 12px', border: 'none', background: 'transparent', cursor: 'pointer', textAlign: 'left', color: '#334155', borderRadius: '6px' }}>
+                    <Presentation size={16} /> Presentation Mode
+                  </button>
+                  <div style={{ height: '1px', background: '#e2e8f0', margin: '4px 0' }}></div>
+                  <button onClick={handleLogout} className="dropdown-item" style={{ width: '100%', display: 'flex', alignItems: 'center', gap: '8px', padding: '8px 12px', border: 'none', background: 'transparent', cursor: 'pointer', textAlign: 'left', color: '#ef4444', borderRadius: '6px' }}>
+                    <LogOut size={16} /> Sign Out
+                  </button>
+                </div>
+              </div>
+            )}
           </div>
-          <span>Client View</span>
-        </button>
+        ) : (
+          <Link 
+            to="/login" 
+            state={{ from: location }}
+            style={{ 
+              textDecoration: 'none', 
+              padding: '8px 16px', 
+              backgroundColor: '#0f172a', 
+              color: 'white', 
+              borderRadius: '6px', 
+              fontWeight: 500,
+              fontSize: '14px'
+            }}
+          >
+            Sign In
+          </Link>
+        )}
       </div>
     </header>
   );

@@ -201,3 +201,11 @@ button {
     padding: var(--spacing-4);
   }
 }
+
+/* Smart Auto-Zoom for Windows Laptops with 125%/150% Scaling */
+/* Targets viewports smaller than standard Mac resolution (1440px) */
+@media screen and (max-width: 1400px) {
+  html {
+    zoom: 0.8;
+  }
+}

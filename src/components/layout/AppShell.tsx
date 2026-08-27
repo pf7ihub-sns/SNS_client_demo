@@ -17,9 +17,13 @@ export default function AppShell({ children }: AppShellProps) {
           <div className="abstract-shape shape-2"></div>
         </div>
         <TopNavigation />
-        <main className="page-container" style={{ position: 'relative', zIndex: 1 }}>
+        <main className="page-container" style={{ position: 'relative', zIndex: 1, minHeight: 'calc(100vh - 140px)' }}>
           {children}
         </main>
+        <footer className="app-footer">
+          <span className="footer-text">@2026 SNS square. All rights reserved</span>
+          <img src="/logo.png" alt="SNS Square" className="footer-logo" />
+        </footer>
       </div>
     </div>
   );
