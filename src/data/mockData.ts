@@ -46,11 +46,9 @@ export const products: Product[] = [
     useCase: 'AI SOC Agent is an AI-powered Security Operations platform designed to automate security alert triage, investigation, response, and resolution.',
     descriptionPoints: [
       'Automates security alert triage, investigation, response, and resolution.',
-      'Uses SIEM-first alert investigation, AI-driven evidence analysis, and risk assessment.',
-      'Provides security and business impact-based prioritization.',
+      'Uses SIEM-first alert investigation, AI-driven evidence analysis, and risk assessment for security and business impact-based prioritization.',
       'Offers HITL, Escalate, and Auto Resolve response paths alongside connector-based response execution.',
-      'Provides Root Cause Analysis (RCA), Corrective Actions, and Human SOC Review.',
-      'Helps SOC teams reduce alert fatigue, accelerate incident resolution, and automate repetitive security operations.'
+      'Provides Root Cause Analysis (RCA), Corrective Actions, and Human SOC Review to help teams reduce alert fatigue and accelerate incident resolution.'
     ],
     keyCapabilities: [
       'SIEM-first alert investigation and classification',
@@ -87,12 +85,10 @@ export const products: Product[] = [
     shortDescription: 'Enterprise solution to resolve supply chain security risks and supplier vulnerabilities.',
     useCase: 'The TISAX Compliance Management System is an enterprise solution designed to resolve supply chain security risks and supplier vulnerabilities.\n\nIt is built for OEM compliance and procurement teams.\n\nIt provides real-time visibility into supplier TISAX readiness through AI-driven risk engines and automated scoring.',
     descriptionPoints: [
-      'Addresses supply chain security risks and supplier vulnerabilities.',
-      'Designed for OEM compliance and procurement teams.',
+      'Addresses supply chain security risks and supplier vulnerabilities for OEM compliance and procurement teams.',
       'Provides real-time visibility into supplier TISAX readiness using AI-driven risk engines and automated scoring.',
       'Aggregates supplier risk metrics, evaluates part dependencies, and identifies critical-risk suppliers.',
-      'Automates evidence tracking and remediation workflows.',
-      'Ensures continuous audit readiness and helps organizations mitigate vehicle program disruptions.'
+      'Automates evidence tracking and remediation workflows to ensure continuous audit readiness.'
     ],
     keyCapabilities: [
       'Real-time supplier TISAX readiness visibility',
@@ -129,11 +125,9 @@ export const products: Product[] = [
     shortDescription: 'Robust solution for managing organizational security education and compliance training.',
     useCase: 'The GRC Security Training platform provides a robust solution for managing organizational cybersecurity education.\n\nIt provides a centralized manager dashboard for managing and monitoring training activities.',
     descriptionPoints: [
-      'Manages organizational cybersecurity education with a centralized manager dashboard that tracks training completion.',
-      'Provides AI-driven course recommendations and monitors compliance.',
+      'Manages organizational cybersecurity education with a centralized manager dashboard that tracks training completion and monitors compliance.',
       'Allows managers to use the AI generator to create role-specific content and deploy customizable phishing simulations.',
       'Provides employees with a personalized learning roadmap, an AI security mentor, and verifiable certificates.',
-      'Integrates targeted awareness modules and detailed analytics.',
       'Helps organizations systematically improve their security posture and build a resilient workforce against cyber threats.'
     ],
     keyCapabilities: [
@@ -171,12 +165,10 @@ export const products: Product[] = [
     shortDescription: 'Enterprise SaaS platform designed to address AI governance and regulatory tracking.',
     useCase: 'GRC Management is an enterprise SaaS platform designed to address AI governance and regulatory tracking.\n\nIt enables compliance teams to monitor organizational security using automated data connectors.',
     descriptionPoints: [
-      'Addresses AI governance and supports regulatory tracking.',
+      'Addresses AI governance and supports regulatory tracking, tracking frameworks such as SOC 2 and monitoring AI risks such as prompt injection.',
       'Enables compliance teams to monitor organizational security by leveraging automated data connectors.',
-      'Uses a centralized risk workflow to aggregate evidence.',
-      'Tracks frameworks such as SOC 2 and monitors AI risks such as prompt injection.',
-      'Provides automated policy creation and real-time dashboards for continuous compliance and visibility.',
-      'Automates manual evidence collection to help organizations mitigate generative AI risks.'
+      'Uses a centralized risk workflow to aggregate evidence and automates manual evidence collection.',
+      'Provides automated policy creation and real-time dashboards for continuous compliance and visibility.'
     ],
     keyCapabilities: [
       'AI governance',
