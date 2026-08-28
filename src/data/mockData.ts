@@ -33,6 +33,14 @@ export const domains: Domain[] = [
     featured: true,
     products: ['comp-05', 'comp-07'],
   },
+  {
+    id: 'retail',
+    name: 'Retail',
+    description: 'Innovative solutions tailored for modern retail businesses.',
+    iconName: 'Store',
+    featured: true,
+    products: [],
+  },
 ];
 
 export const products: Product[] = [
