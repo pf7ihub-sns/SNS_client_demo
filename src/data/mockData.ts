@@ -7,7 +7,7 @@ export const domains: Domain[] = [
     description: "Discover SNS Square's compliance products and solution.",
     iconName: 'ShieldCheck',
     featured: true,
-    products: ['comp-06', 'comp-08'],
+    products: ['comp-06', 'comp-08', 'comp-09'],
   },
   {
     id: 'ai-automation',
@@ -39,7 +39,7 @@ export const domains: Domain[] = [
     description: 'Innovative solutions tailored for modern retail businesses.',
     iconName: 'Store',
     featured: true,
-    products: [],
+    products: ['retail-01'],
   },
 ];
 
@@ -81,7 +81,6 @@ export const products: Product[] = [
       'Execute connector-based response'
     ],
     workflowImageUrl: '/images/workflow_soc.png',
-    demoUrl: 'https://drive.google.com/file/d/1mdJbnFd8pH0rMzOpaETZ4oXZ4eKHKXVl/preview',
     siteUrl: 'https://secop.snssquare.com'
   },
   {
@@ -121,7 +120,6 @@ export const products: Product[] = [
       'Automate evidence tracking and remediation'
     ],
     workflowImageUrl: '/images/workflow_tisax.png',
-    demoUrl: 'https://drive.google.com/file/d/12O-BNhJQT0J9koPXdVWisPKAiOfvy-qr/preview',
     siteUrl: 'https://comtisax.snssquare.com'
   },
   {
@@ -161,7 +159,6 @@ export const products: Product[] = [
       'Track competency and training completion'
     ],
     workflowImageUrl: '/images/workflow_training.png',
-    demoUrl: 'https://drive.google.com/file/d/1Lb4zh3G6XW6n2izEZptt8dEBVMOf7-1P/preview',
     siteUrl: 'https://sectraining.snssquare.com'
   },
   {
@@ -201,7 +198,70 @@ export const products: Product[] = [
       'Generate real-time dashboards and policies'
     ],
     workflowImageUrl: '/images/workflow_compliance.png',
-    demoUrl: 'https://drive.google.com/file/d/14nZGlCmOAXRibNT7cyh7L9fIaLSAwqwS/preview',
     siteUrl: 'https://comgrcmanagement.snssquare.com'
+  },
+  {
+    id: 'retail-01',
+    name: 'Intelligent Supply Chain & Inventory Management',
+    slug: 'intelligent-supply-chain-inventory-management',
+    domainId: 'retail',
+    category: 'Supply Chain & Inventory',
+    shortDescription: 'AI-driven supply chain intelligence platform for inventory prioritization, predictive stockout prevention, and vendor performance optimization across multi-store retail and warehouse operations.',
+    useCase: 'AI-driven supply chain intelligence platform for multi-store retail and warehouse operations.\n\nAddresses unexpected inventory stockouts through predictive stockout risk analysis.\n\nOptimizes replenishment prioritization using inventory movements, consumption velocity, and demand conditions.\n\nImproves vendor performance visibility through supplier fulfillment and performance analysis.',
+    descriptionPoints: [
+      'Enables inventory planners, procurement specialists, and supply chain leaders to proactively manage stock availability and optimize purchase order workflows.',
+      'Uses predictive analytics, centralized data aggregation, and event-driven calculations to evaluate store-level stock movements, historical consumption velocity, and supplier fulfillment timelines.',
+      'Dynamically prioritizes replenishment requests and predicts stockout risks using forward-looking run-rate forecasting.',
+      'Performs vendor performance analysis across lead times, quality scores, and SLA compliance.',
+      'Provides real-time KPI monitoring, AI procurement recommendations, and a context-aware AI chatbot with access to system data and metrics.'
+    ],
+    keyCapabilities: [
+      'Dynamic Replenishment Prioritization',
+      'Predictive Stockout Risk Analysis',
+      'Vendor Performance Analysis',
+      'Real-Time KPI Monitoring',
+      'AI Procurement Recommendations',
+      'Context-Aware AI Chatbot'
+    ],
+    status: 'Active',
+    featured: true,
+    isNew: true,
+    tags: ['Retail', 'Supply Chain', 'Inventory', 'AI'],
+    heroImageUrl: '/images/supply_chain.jpg',
+    demoUrl: 'https://drive.google.com/file/d/10-c79McvyqNEdR6RJxgPbaeaRE-PdotA/preview',
+    siteUrl: 'https://bpretail.snssquare.com/'
+  },
+  {
+    id: 'comp-09',
+    name: 'AI Compliance Assistant',
+    slug: 'ai-compliance-assistant',
+    domainId: 'compliance',
+    category: 'AI Governance',
+    shortDescription: 'AI-powered compliance assistant that guides organizations from AI project ideation to compliance-ready deployment through intelligent, context-aware recommendations.',
+    useCase: 'AI-powered compliance assistant that guides organizations through their AI compliance journey.\n\nUnderstands AI project context including purpose, cloud environment, operating region, and data being processed.\n\nRecommends relevant compliance frameworks, security controls, and implementation guidance based on project requirements.\n\nEvaluates AI models before adoption by assessing risks, governance considerations, strengths, and recommended security controls.',
+    descriptionPoints: [
+      'Captures project context through interactive AI-driven conversations.',
+      'Maps requirements to relevant compliance and security frameworks.',
+      'Evaluates pre-deployment AI models for risks and governance.',
+      'Delivers intelligent guidance via a RAG-powered compliance agent.'
+    ],
+    keyCapabilities: [
+      'AI Compliance Guidance',
+      'Interactive Project Assessment',
+      'Business Context Understanding',
+      'Compliance Framework Recommendations',
+      'Security Recommendation Engine',
+      'AI Model Assessment',
+      'AI Risk & Governance Analysis',
+      'Security Control Recommendations',
+      'RAG-Powered Compliance Intelligence'
+    ],
+    status: 'Active',
+    featured: false,
+    isNew: true,
+    tags: ['AI', 'Compliance', 'Governance', 'Security'],
+    heroImageUrl: '/images/ai_compliance_assistant.png',
+    demoUrl: 'https://drive.google.com/file/d/1UyxpLh6PkeNk0VzxBP1lcQt-CYAJfMTB/preview'
   }
 ];
+

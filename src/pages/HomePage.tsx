@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { Search, ArrowRight, ShieldCheck, Lock } from 'lucide-react';
+import { Search, ArrowRight, ShieldCheck, Lock, Store } from 'lucide-react';
 import './pages.css';
 
 export default function HomePage() {
@@ -71,6 +71,17 @@ export default function HomePage() {
             </div>
             <h3>Security</h3>
             <p>Enterprise-grade Security Solutions to protect your critical assets.</p>
+            <div className="domain-link">
+              Explore Domain <ArrowRight size={16} />
+            </div>
+          </Link>
+
+          <Link to="/domain/retail" className="domain-card featured">
+            <div className="domain-icon-wrapper">
+              <Store size={32} />
+            </div>
+            <h3>Retail</h3>
+            <p>Innovative solutions tailored for modern retail businesses.</p>
             <div className="domain-link">
               Explore Domain <ArrowRight size={16} />
             </div>

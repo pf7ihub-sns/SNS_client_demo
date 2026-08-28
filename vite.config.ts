@@ -5,6 +5,7 @@ import { defineConfig } from 'vite'
 export default defineConfig({
   plugins: [react()],
   server: {
+    allowedHosts: ['stilt-watch-antidote.ngrok-free.dev', 'grcmanage.snssquare.com.tunnelto.me'],
     proxy: {
       '/api': 'http://localhost:5001'
     }

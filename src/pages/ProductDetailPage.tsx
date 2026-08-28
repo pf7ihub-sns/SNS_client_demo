@@ -64,21 +64,23 @@ export default function ProductDetailPage() {
                 Watch Demo Video {!isInternal && <span style={{ fontSize: '10px', marginLeft: '4px' }}>🔒</span>}
               </button>
             )}
-            {product.siteUrl ? (
-              <button onClick={(e) => {
-                if (!isInternal) {
-                  e.preventDefault();
-                  setRestrictedResource('Live Demo');
-                } else {
-                  window.open(product.siteUrl, '_blank', 'noopener,noreferrer');
-                }
-              }} className="btn-secondary-light" style={{ display: 'flex', alignItems: 'center', gap: '8px', padding: '0.75rem 1.5rem', borderRadius: '6px', backgroundColor: 'transparent', color: 'var(--text-primary)', border: '1px solid var(--border-color)', cursor: 'pointer', fontWeight: 500 }}>
-                Visit Website <ExternalLink size={18} /> {!isInternal && <span style={{ fontSize: '10px', marginLeft: '4px' }}>🔒</span>}
-              </button>
-            ) : (
-              <button className="btn-secondary-light" onClick={() => !isInternal && setRestrictedResource('Live Demo')} style={{ display: 'flex', alignItems: 'center', gap: '8px', padding: '0.75rem 1.5rem', borderRadius: '6px', backgroundColor: 'transparent', color: 'var(--text-primary)', border: '1px solid var(--border-color)', cursor: 'pointer', fontWeight: 500 }}>
-                Visit Website <ExternalLink size={18} /> {!isInternal && <span style={{ fontSize: '10px', marginLeft: '4px' }}>🔒</span>}
-              </button>
+            {product.siteUrl !== undefined && (
+              product.siteUrl ? (
+                <button onClick={(e) => {
+                  if (!isInternal) {
+                    e.preventDefault();
+                    setRestrictedResource('Live Demo');
+                  } else {
+                    window.open(product.siteUrl, '_blank', 'noopener,noreferrer');
+                  }
+                }} className="btn-primary" style={{ display: 'flex', alignItems: 'center', gap: '8px', padding: '0.75rem 1.5rem', borderRadius: '6px', backgroundColor: '#2563eb', color: 'white', border: 'none', cursor: 'pointer', fontWeight: 500 }}>
+                  Visit Website <ExternalLink size={18} /> {!isInternal && <span style={{ fontSize: '10px', marginLeft: '4px' }}>🔒</span>}
+                </button>
+              ) : (
+                <button className="btn-primary" onClick={() => !isInternal && setRestrictedResource('Live Demo')} style={{ display: 'flex', alignItems: 'center', gap: '8px', padding: '0.75rem 1.5rem', borderRadius: '6px', backgroundColor: '#2563eb', color: 'white', border: 'none', cursor: 'pointer', fontWeight: 500 }}>
+                  Visit Website <ExternalLink size={18} /> {!isInternal && <span style={{ fontSize: '10px', marginLeft: '4px' }}>🔒</span>}
+                </button>
+              )
             )}
             {product.workflowSteps && product.workflowSteps.length > 0 && (
               <button 
@@ -103,36 +105,6 @@ export default function ProductDetailPage() {
         </div>
       </section>
 
-      {/* 2. WHAT IS IT / WHAT IS IT ABOUT? */}
-      <section className="showcase-editorial" style={{ paddingTop: '2rem', paddingBottom: '1rem' }}>
-        <div className="editorial-container">
-          <div className="editorial-title-col">
-            <h2>What is it / What is it about?</h2>
-          </div>
-          <div className="editorial-text-col">
-            <p className="editorial-problem" style={{ fontSize: '1.1rem', lineHeight: '1.6', color: 'var(--text-secondary)', whiteSpace: 'pre-wrap' }}>
-              {product.useCase}
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* 3. DESCRIPTION */}
-      <section className="showcase-editorial" style={{ paddingTop: '1rem', paddingBottom: '2rem' }}>
-        <div className="editorial-container">
-          <div className="editorial-title-col">
-            <h2>Description</h2>
-          </div>
-          <div className="editorial-text-col">
-            <ul style={{ fontSize: '1.1rem', lineHeight: '1.8', color: 'var(--text-secondary)', paddingLeft: '1.5rem', margin: 0 }}>
-              {product.descriptionPoints.map((point, idx) => (
-                <li key={idx} style={{ marginBottom: '0.5rem' }}>{point}</li>
-              ))}
-            </ul>
-          </div>
-        </div>
-      </section>
-
       {/* 4. KEY CAPABILITIES */}
       <section className="showcase-capabilities" style={{ paddingTop: '2rem', paddingBottom: '3rem' }}>
         <div className="section-container">
@@ -148,7 +120,21 @@ export default function ProductDetailPage() {
         </div>
       </section>
 
-
+      {/* DESCRIPTION (COMBINED) */}
+      <section className="showcase-editorial" style={{ paddingTop: '2rem', paddingBottom: '2rem' }}>
+        <div className="editorial-container">
+          <div className="editorial-title-col">
+            <h2>Description</h2>
+          </div>
+          <div className="editorial-text-col">
+            <ul style={{ fontSize: '1.1rem', lineHeight: '1.8', color: 'var(--text-secondary)', paddingLeft: '1.5rem', margin: 0 }}>
+              {product.descriptionPoints.map((point, idx) => (
+                <li key={idx} style={{ marginBottom: '0.5rem' }}>{point}</li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </section>
 
       {/* WORKFLOW MODAL */}
       <WorkflowModal
