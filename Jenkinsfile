@@ -11,7 +11,7 @@ pipeline {
         =============================== */
         AWS_REGION = "us-east-1"
         S3_BUCKET = "grcmanage.snssquare.com"
-        CLOUDFRONT_DISTRIBUTION_ID = ""
+        CLOUDFRONT_DISTRIBUTION_ID = "E21GX2OMDX42L8"
     }
 
     stages {
