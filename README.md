@@ -1,4 +1,4 @@
-# SNS Square - Product Showcase (Client Demo)
+# SNS Square - Solution Hub (Client Demo)
 
 This is the internal repository for the **SNS Square Product Showcase** platform. It acts as a central hub presenting various enterprise solutions (Security, Compliance, AI & Automation, Data & Analytics).
 
