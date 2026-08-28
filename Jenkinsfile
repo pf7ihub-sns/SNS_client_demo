@@ -1,59 +1,110 @@
 pipeline {
     agent any
 
+    tools {
+        nodejs "NodeJS_22"
+    }
+
     environment {
-        DOCKER_IMAGE = 'sns-square-solution-hub'
-        DOCKER_TAG = "v${env.BUILD_ID}"
+        /* ===============================
+           AWS
+        =============================== */
+        AWS_REGION = "us-east-1"
+        S3_BUCKET = "grcmanage.snssquare.com"
+        CLOUDFRONT_DISTRIBUTION_ID = ""
     }
 
     stages {
+        stage('Check Node Version') {
+            steps {
+                sh '''
+                    echo "Node Version:"
+                    node -v
+                    echo "NPM Version:"
+                    npm -v
+                '''
+            }
+        }
+
         stage('Clean Workspace') {
             steps {
-                deleteDir()
+                sh '''
+                    rm -rf node_modules
+                    rm -rf dist
+                '''
             }
         }
 
-        stage('Checkout') {
+        stage('Install Dependencies') {
             steps {
-                checkout scm
+                sh '''
+                    npm ci
+                '''
             }
         }
 
-        stage('Build Docker Image') {
+        stage('Build React App') {
             steps {
-                script {
-                    sh "docker build -t ${DOCKER_IMAGE}:${DOCKER_TAG} -t ${DOCKER_IMAGE}:latest ."
-                }
+                sh '''
+                    export NODE_OPTIONS="--max-old-space-size=4096"
+                    CI=false npm run build
+                '''
             }
         }
 
-        stage('Security Scan') {
+        stage('Verify Build') {
             steps {
-                // Placeholder for security scanning tools
-                echo "Running security scan on Docker image..."
+                sh '''
+                    ls -lah
+                    ls -lah dist
+                    if [ -d "dist" ]; then
+                        echo "dist directory exists. Build successful."
+                    else
+                        echo "dist directory not found! Build failed."
+                        exit 1
+                    fi
+                '''
             }
         }
 
-        stage('Deploy') {
+        stage('Upload to S3') {
+            when {
+                expression { currentBuild.result == null || currentBuild.result == 'SUCCESS' }
+            }
             steps {
-                script {
-                    echo "Deploying ${DOCKER_IMAGE}:${DOCKER_TAG}..."
-                    // The production team will insert their orchestration logic here
-                    // e.g. AWS ECR push, ECS restart, etc.
-                }
+                sh '''
+                    aws s3 sync dist/ s3://$S3_BUCKET/ \
+                        --delete \
+                        --region $AWS_REGION
+                '''
+            }
+        }
+
+        stage('Invalidate CloudFront') {
+            when {
+                expression { currentBuild.result == null || currentBuild.result == 'SUCCESS' }
+            }
+            steps {
+                sh '''
+                    aws cloudfront create-invalidation \
+                        --distribution-id $CLOUDFRONT_DISTRIBUTION_ID \
+                        --paths "/*"
+                '''
             }
         }
     }
 
     post {
-        always {
-            echo "Pipeline complete."
-        }
         success {
-            echo "Deployment successful."
+            echo "✅ Deployment Successful!"
         }
+
         failure {
-            echo "Deployment failed! Please check logs."
+            echo "❌ Deployment Failed!"
+        }
+
+        always {
+            deleteDir()
         }
     }
 }
