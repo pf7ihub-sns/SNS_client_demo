@@ -42,8 +42,8 @@ app.get(/^(?!\/api).*/, (req, res) => {
 });
 
 // MongoDB Connection
-const PORT = process.env.PORT || 5001;
-const MONGODB_URI = process.env.MONGODB_URI;
+const PORT = 5001;
+const MONGODB_URI = "mongodb://client-demo:Client_Demo%40123@dev.snssquare.com:27017/client-demo?authSource=client-demo&tls=true";
 
 if (!MONGODB_URI) {
   console.error('FATAL ERROR: MONGODB_URI is not defined in .env file.');
