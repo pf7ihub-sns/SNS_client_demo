@@ -27,7 +27,7 @@ export const domains: Domain[] = [
   },
   {
     id: 'security',
-    name: 'Security',
+    name: 'Infosec',
     description: 'Enterprise-grade Security Solutions to protect your critical assets.',
     iconName: 'Lock',
     featured: true,

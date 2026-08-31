@@ -69,7 +69,7 @@ export default function HomePage() {
             <div className="domain-icon-wrapper">
               <Lock size={32} />
             </div>
-            <h3>Security</h3>
+            <h3>Infosec</h3>
             <p>Enterprise-grade Security Solutions to protect your critical assets.</p>
             <div className="domain-link">
               Explore Domain <ArrowRight size={16} />

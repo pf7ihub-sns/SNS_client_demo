@@ -61,7 +61,7 @@ export default function Sidebar() {
               onClick={() => setIsMobileOpen(false)}
             >
               <Lock size={20} />
-              <span>Security</span>
+              <span>Infosec</span>
               {isActive('/domain/security') && <ChevronRight size={16} className="ml-auto" />}
             </Link>
 
