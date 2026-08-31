@@ -14,6 +14,7 @@ pipeline {
         CLOUDFRONT_DISTRIBUTION_ID = "E21GX2OMDX42L8"
         PORT = 5001
         MONGODB_URI = "mongodb://client-demo:Client_Demo%40123@dev.snssquare.com:27017/client-demo?authSource=client-demo&tls=true"
+        VITE_API_BASE_URL = "https://stilt-watch-antidote.ngrok-free.dev"
     }
 
     stages {
