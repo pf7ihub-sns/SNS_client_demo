@@ -32,7 +32,10 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     try {
       const response = await fetch(`${API_BASE}/api/auth/me`, {
         // credentials: 'include' is critical for sending HTTP-only cookies
-        credentials: 'include'
+        credentials: 'include',
+        headers: {
+          'ngrok-skip-browser-warning': '69420'
+        }
       });
       
       if (response.ok) {
@@ -59,7 +62,10 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     try {
       const response = await fetch(`${API_BASE}/api/auth/login`, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: { 
+          'Content-Type': 'application/json',
+          'ngrok-skip-browser-warning': '69420'
+        },
         credentials: 'include',
         body: JSON.stringify({ email, password: password || 'demo' })
       });
@@ -91,7 +97,10 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     try {
       const response = await fetch(`${API_BASE}/api/auth/register`, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: { 
+          'Content-Type': 'application/json',
+          'ngrok-skip-browser-warning': '69420'
+        },
         credentials: 'include',
         body: JSON.stringify({ email, name, password: password || 'demo' })
       });
@@ -121,7 +130,10 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     try {
       await fetch(`${API_BASE}/api/auth/logout`, {
         method: 'POST',
-        credentials: 'include'
+        credentials: 'include',
+        headers: {
+          'ngrok-skip-browser-warning': '69420'
+        }
       });
     } catch (error) {
       console.error('Logout error:', error);
