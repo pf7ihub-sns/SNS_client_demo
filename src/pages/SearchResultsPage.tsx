@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { Search } from 'lucide-react';
-import { products } from '../data/mockData';
+import { products, domains } from '../data/mockData';
 import ProductCard from '../components/ui/ProductCard';
 import './pages.css';
 
@@ -27,14 +27,15 @@ export default function SearchResultsPage() {
 
   const currentQuery = searchParams.get('q') || '';
 
-  // Filter products based on URL query
+  // Filter products based on URL query (Domain only)
   const filteredProducts = products.filter(product => {
     if (!currentQuery) return true; // Show all if no query
     
     const query = currentQuery.toLowerCase();
-    return product.name.toLowerCase().includes(query) || 
-           product.shortDescription.toLowerCase().includes(query) ||
-           product.tags.some(t => t.toLowerCase().includes(query));
+    const domain = domains.find(d => d.id === product.domainId);
+    
+    if (!domain) return false;
+    return domain.name.toLowerCase().includes(query);
   });
 
   return (
@@ -51,7 +52,7 @@ export default function SearchResultsPage() {
           <Search size={18} className="search-icon" />
           <input 
             type="text" 
-            placeholder="Search for products, domains, or capabilities..." 
+            placeholder="Search by Solution Domain (e.g., Compliance, Retail)..." 
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             style={{ width: '100%' }}

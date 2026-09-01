@@ -9,18 +9,19 @@ export default function HomePage() {
 
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
-    if (searchQuery.trim()) {
-      navigate(`/search?q=${encodeURIComponent(searchQuery.trim())}`);
-    }
+    // Filtering now happens in-page automatically as the user types in searchQuery
   };
+
+  const query = searchQuery.toLowerCase().trim();
+  const showCompliance = !query || 'compliance'.includes(query);
+  const showInfosec = !query || 'infosec'.includes(query) || 'security'.includes(query);
+  const showRetail = !query || 'retail'.includes(query);
 
   return (
     <div className="home-page">
       <section className="hero-section">
         <div className="hero-content">
-          <div className="badge new mb-4" style={{ display: 'inline-flex', marginBottom: '16px' }}>
-            <span className="badge-dot"></span> New Compliance Solutions Added
-          </div>
+
           <h1 className="hero-title">SNS Square Solution Hub</h1>
           <p className="hero-subtitle">
             Discover intelligent enterprise solutions designed to solve complex business,
@@ -32,7 +33,7 @@ export default function HomePage() {
               <Search size={20} className="search-icon" />
               <input 
                 type="text" 
-                placeholder="Search for products, domains, or capabilities..." 
+                placeholder="Search by Solution Domain (e.g., Compliance, Retail)..." 
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
               />
@@ -53,39 +54,50 @@ export default function HomePage() {
         </div>
 
         <div className="domain-grid">
-          {/* We'll hardcode the primary one to highlight it */}
-          <Link to="/domain/compliance" className="domain-card featured">
-            <div className="domain-icon-wrapper">
-              <ShieldCheck size={32} />
-            </div>
-            <h3>Compliance</h3>
-            <p>Regulatory tracking, risk management, and data governance solutions.</p>
-            <div className="domain-link">
-              Explore Domain <ArrowRight size={16} />
-            </div>
-          </Link>
+          {showCompliance && (
+            <Link to="/domain/compliance" className="domain-card featured">
+              <div className="domain-icon-wrapper">
+                <ShieldCheck size={32} />
+              </div>
+              <h3>Compliance</h3>
+              <p>Regulatory tracking, risk management, and data governance solutions.</p>
+              <div className="domain-link">
+                Explore Domain <ArrowRight size={16} />
+              </div>
+            </Link>
+          )}
 
-          <Link to="/domain/security" className="domain-card featured">
-            <div className="domain-icon-wrapper">
-              <Lock size={32} />
-            </div>
-            <h3>Infosec</h3>
-            <p>Enterprise-grade Security Solutions to protect your critical assets.</p>
-            <div className="domain-link">
-              Explore Domain <ArrowRight size={16} />
-            </div>
-          </Link>
+          {showInfosec && (
+            <Link to="/domain/security" className="domain-card featured">
+              <div className="domain-icon-wrapper">
+                <Lock size={32} />
+              </div>
+              <h3>Infosec</h3>
+              <p>Enterprise-grade Security Solutions to protect your critical assets.</p>
+              <div className="domain-link">
+                Explore Domain <ArrowRight size={16} />
+              </div>
+            </Link>
+          )}
 
-          <Link to="/domain/retail" className="domain-card featured">
-            <div className="domain-icon-wrapper">
-              <Store size={32} />
+          {showRetail && (
+            <Link to="/domain/retail" className="domain-card featured">
+              <div className="domain-icon-wrapper">
+                <Store size={32} />
+              </div>
+              <h3>Retail</h3>
+              <p>Innovative solutions tailored for modern retail businesses.</p>
+              <div className="domain-link">
+                Explore Domain <ArrowRight size={16} />
+              </div>
+            </Link>
+          )}
+          
+          {!showCompliance && !showInfosec && !showRetail && (
+            <div style={{ padding: '2rem', textAlign: 'center', gridColumn: '1 / -1' }}>
+              <p>No solution domains found for "{searchQuery}".</p>
             </div>
-            <h3>Retail</h3>
-            <p>Innovative solutions tailored for modern retail businesses.</p>
-            <div className="domain-link">
-              Explore Domain <ArrowRight size={16} />
-            </div>
-          </Link>
+          )}
         </div>
       </section>
     </div>

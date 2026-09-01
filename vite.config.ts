@@ -9,10 +9,6 @@ export default defineConfig({
     allowedHosts: ['stilt-watch-antidote.ngrok-free.dev', 'grcmanage.snssquare.com.tunnelto.me'],
     proxy: {
       '/api': 'http://localhost:5001'
-    },
-    cors: {
-      origin: 'https://grcmanage.snssquare.com',
-      credentials: true
     }
   }
 })

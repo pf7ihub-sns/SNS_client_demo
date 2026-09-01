@@ -89,19 +89,8 @@ export default function TopNavigation() {
       </div>
       
       <div className="top-nav-right">
-        <form className="global-search" onSubmit={handleGlobalSearch}>
-          <Search size={18} className="search-icon" />
-          <input 
-            type="text" 
-            placeholder="Quick search..." 
-            className="search-input" 
-            value={globalSearchQuery}
-            onChange={(e) => setGlobalSearchQuery(e.target.value)}
-          />
-          <button type="submit" style={{ display: 'none' }}>Search</button>
-          <span className="search-shortcut">⌘K</span>
-        </form>
         
+
         <button className="icon-button">
           <Bell size={20} />
           <span className="notification-dot"></span>
@@ -143,13 +132,6 @@ export default function TopNavigation() {
                   )}
                 </div>
                 <div style={{ padding: '8px' }}>
-                  <button className="dropdown-item" style={{ width: '100%', display: 'flex', alignItems: 'center', gap: '8px', padding: '8px 12px', border: 'none', background: 'transparent', cursor: 'pointer', textAlign: 'left', color: '#334155', borderRadius: '6px' }}>
-                    <Settings size={16} /> Profile Settings
-                  </button>
-                  <button className="dropdown-item" style={{ width: '100%', display: 'flex', alignItems: 'center', gap: '8px', padding: '8px 12px', border: 'none', background: 'transparent', cursor: 'pointer', textAlign: 'left', color: '#334155', borderRadius: '6px' }}>
-                    <Presentation size={16} /> Presentation Mode
-                  </button>
-                  <div style={{ height: '1px', background: '#e2e8f0', margin: '4px 0' }}></div>
                   <button onClick={handleLogout} className="dropdown-item" style={{ width: '100%', display: 'flex', alignItems: 'center', gap: '8px', padding: '8px 12px', border: 'none', background: 'transparent', cursor: 'pointer', textAlign: 'left', color: '#ef4444', borderRadius: '6px' }}>
                     <LogOut size={16} /> Sign Out
                   </button>
