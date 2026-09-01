@@ -1,12 +1,10 @@
 import { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { Search, ArrowRight, ShieldCheck, Lock, Store } from 'lucide-react';
 import './pages.css';
 
 export default function HomePage() {
   const [searchQuery, setSearchQuery] = useState('');
-  const navigate = useNavigate();
-
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
     // Filtering now happens in-page automatically as the user types in searchQuery

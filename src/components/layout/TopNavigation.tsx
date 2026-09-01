@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from 'react';
 import { useLocation, Link, useNavigate } from 'react-router-dom';
-import { ChevronRight, Search, Bell, LogOut, Presentation, Settings } from 'lucide-react';
+import { ChevronRight, Bell, LogOut } from 'lucide-react';
 import { products, domains } from '../../data/mockData';
 import { useAuth } from '../../context/AuthContext';
 
@@ -9,18 +9,9 @@ export default function TopNavigation() {
   const navigate = useNavigate();
   const { isAuthenticated, user, logout } = useAuth();
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-  const [globalSearchQuery, setGlobalSearchQuery] = useState('');
   const dropdownRef = useRef<HTMLDivElement>(null);
   
   const pathParts = location.pathname.split('/').filter(Boolean);
-
-  const handleGlobalSearch = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (globalSearchQuery.trim()) {
-      navigate(`/search?q=${encodeURIComponent(globalSearchQuery.trim())}`);
-      setGlobalSearchQuery('');
-    }
-  };
 
   // Close dropdown when clicking outside
   useEffect(() => {
