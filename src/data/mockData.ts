@@ -7,7 +7,7 @@ export const domains: Domain[] = [
     description: "Discover SNS Square's compliance products and solution.",
     iconName: 'ShieldCheck',
     featured: true,
-    products: ['comp-06', 'comp-08', 'comp-09'],
+    products: ['comp-06', 'comp-08', 'comp-09', 'comp-07'],
   },
   {
     id: 'ai-automation',
@@ -31,7 +31,7 @@ export const domains: Domain[] = [
     description: 'Enterprise-grade Security Solutions to protect your critical assets.',
     iconName: 'Lock',
     featured: true,
-    products: ['comp-05', 'comp-07'],
+    products: ['comp-05'],
   },
   {
     id: 'retail',
@@ -126,7 +126,7 @@ export const products: Product[] = [
     id: 'comp-07',
     name: 'GRC Security Training',
     slug: 'grc-security-training',
-    domainId: 'security',
+    domainId: 'compliance',
     category: 'Training & Awareness',
     shortDescription: 'Robust solution for managing organizational security education and compliance training.',
     useCase: 'The GRC Security Training platform provides a robust solution for managing organizational cybersecurity education.\n\nIt provides a centralized manager dashboard for managing and monitoring training activities.',
