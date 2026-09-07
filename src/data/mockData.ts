@@ -229,7 +229,7 @@ export const products: Product[] = [
     tags: ['Retail', 'Supply Chain', 'Inventory', 'AI'],
     heroImageUrl: '/images/supply_chain.jpg',
     demoUrl: 'https://drive.google.com/file/d/10-c79McvyqNEdR6RJxgPbaeaRE-PdotA/preview',
-    siteUrl: 'https://bpretail.snssquare.com/'
+    siteUrl: 'https://retail.snssquare.com/'
   },
   {
     id: 'comp-09',
