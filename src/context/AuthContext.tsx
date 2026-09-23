@@ -31,11 +31,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   const checkAuth = useCallback(async () => {
     try {
       const response = await fetch(`${API_BASE}/api/auth/me`, {
-        // credentials: 'include' is critical for sending HTTP-only cookies
         credentials: 'include',
-        headers: {
-          'ngrok-skip-browser-warning': '69420'
-        }
       });
       
       if (response.ok) {
@@ -64,7 +60,6 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         method: 'POST',
         headers: { 
           'Content-Type': 'application/json',
-          'ngrok-skip-browser-warning': '69420'
         },
         credentials: 'include',
         body: JSON.stringify({ email, password: password || 'demo' })
@@ -99,7 +94,6 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         method: 'POST',
         headers: { 
           'Content-Type': 'application/json',
-          'ngrok-skip-browser-warning': '69420'
         },
         credentials: 'include',
         body: JSON.stringify({ email, name, password: password || 'demo' })
@@ -131,9 +125,6 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       await fetch(`${API_BASE}/api/auth/logout`, {
         method: 'POST',
         credentials: 'include',
-        headers: {
-          'ngrok-skip-browser-warning': '69420'
-        }
       });
     } catch (error) {
       console.error('Logout error:', error);
