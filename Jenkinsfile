@@ -12,7 +12,7 @@ pipeline {
         AWS_REGION = "us-east-1"
         S3_BUCKET = "grcmanage.snssquare.com"
         CLOUDFRONT_DISTRIBUTION_ID = "E21GX2OMDX42L8"
-        VITE_API_BASE_URL = "https://stilt-watch-antidote.ngrok-free.dev"
+        VITE_API_BASE_URL = "https://apishub.snssquare.com/"
     }
 
     stages {
