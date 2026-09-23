@@ -8,7 +8,8 @@ export default defineConfig({
     port: 5174,
     allowedHosts: ['stilt-watch-antidote.ngrok-free.dev', 'grcmanage.snssquare.com.tunnelto.me'],
     proxy: {
-      '/api': 'http://localhost:5001'
+      // '/api': 'https://v5wkf1nf-5001.inc1.devtunnels.ms/'
+      '/api': 'https://apishub.snssquare.com/'
     }
   }
 })

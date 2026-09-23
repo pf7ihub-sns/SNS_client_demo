@@ -1,4 +1,8 @@
 import type { Domain, Product } from './models';
+import wcBanner from '../assets/WC-banner.png';
+import chatBanner from '../assets/Chat-Banner.png';
+import wcWorkflow from '../assets/WC-WF.png';
+import cfoWorkflow from '../assets/CA-WF.png';
 
 export const domains: Domain[] = [
   {
@@ -40,6 +44,14 @@ export const domains: Domain[] = [
     iconName: 'Store',
     featured: true,
     products: ['retail-01'],
+  },
+  {
+    id: 'finance',
+    name: 'Finance',
+    description: 'Solutions for financial operations, risk, and reporting.',
+    iconName: 'Landmark',
+    featured: true,
+    products: ['finance-01', 'finance-02'],
   },
 ];
 
@@ -262,6 +274,86 @@ export const products: Product[] = [
     tags: ['AI', 'Compliance', 'Governance', 'Security'],
     heroImageUrl: '/images/ai_compliance_assistant.png',
     demoUrl: 'https://drive.google.com/file/d/1UyxpLh6PkeNk0VzxBP1lcQt-CYAJfMTB/preview'
+  },
+  {
+    id: 'finance-01',
+    name: 'Working Capital Optimizer',
+    slug: 'working-capital-optimizer',
+    domainId: 'finance',
+    category: 'Working Capital',
+    shortDescription: 'AI-driven solution that analyzes cash inflows and outflows, predicts liquidity needs, and recommends next-best actions to optimize working capital.',
+    useCase: 'AI-driven solution that analyzes cash inflows and outflows, predicts liquidity needs, and recommends next-best actions to optimize working capital.',
+    descriptionPoints: [
+      'Provides real-time visibility into cash inflows, outflows, AR, AP, and overall liquidity position.',
+      'Forecasts the next 30-day cash position and identifies potential cash surplus or shortage using historical and transactional data.',
+      'Detects cash leakage, cash holds, collection risks, and payment risks across customers and vendors.',
+      'Generates customer- and vendor-specific AI recommendations to accelerate collections, prioritize payments, optimize surplus cash, and protect liquidity.'
+    ],
+    keyCapabilities: [
+      'Cash Forecasting',
+      'AR/AP Analytics',
+      'Risk Scoring',
+      'Leakage Detection',
+      'Cash Hold Detection',
+      'Customer Prioritization',
+      'Vendor Prioritization',
+      'AI Recommendations',
+      'Cash Visibility'
+    ],
+    status: 'Active',
+    featured: true,
+    isNew: true,
+    tags: ['Finance', 'Working Capital', 'AI', 'Liquidity'],
+    heroImageUrl: wcBanner,
+    workflowSteps: [
+      'Ingest cash inflows, outflows, AR & AP data',
+      'Forecast 30-day cash position & liquidity needs',
+      'Detect leakage, cash holds, collection & payment risks',
+      'Prioritize customers & vendors with AI risk scoring',
+      'Recommend next-best actions to optimize working capital'
+    ],
+    workflowImageUrl: wcWorkflow,
+    siteUrl: 'https://finance.snssquare.com/organisation/login',
+  },
+  {
+    id: 'finance-02',
+    name: 'CFO Conversational Analytics',
+    slug: 'cfo-conversational-analytics',
+    domainId: 'finance',
+    category: 'Conversational Analytics',
+    shortDescription: 'AI-driven conversational analytics solution that enables finance teams to interact with CFO data using natural language, analyze financial and operational performance, identify risks and trends, and generate actionable business insights.',
+    useCase: 'AI-driven conversational analytics solution that enables finance teams to interact with CFO data using natural language, analyze financial and operational performance, identify risks and trends, and generate actionable business insights.',
+    descriptionPoints: [
+      'Provides real-time visibility into procurement, inventory, production, sales, accounts payable, and overall financial performance.',
+      'Analyzes purchase orders, GRNs, supplier invoices, and reconciliation data to identify quantity, cost, and payment mismatches.',
+      'Tracks product, vendor, customer, warehouse, and plant performance to detect cost variances, inventory risks, procurement inefficiencies, and operational issues.',
+      'Generates AI-powered financial insights, trend analysis, comparisons, rankings, and business recommendations to support faster and data-driven decision-making.'
+    ],
+    keyCapabilities: [
+      'CFO-Level Financial Analytics',
+      'Procurement Performance Analytics',
+      'Vendor & Supplier Prioritization',
+      'Invoice & PO Reconciliation',
+      'Production Performance Monitoring',
+      'Financial Trend & Forecast Analysis',
+      'AI-Powered Business Recommendations',
+      'Interactive Financial Data Visualization',
+      'Risk & Anomaly Detection'
+    ],
+    status: 'Active',
+    featured: true,
+    isNew: true,
+    tags: ['Finance', 'CFO', 'Analytics', 'AI'],
+    heroImageUrl: chatBanner,
+    workflowSteps: [
+      'Ingest procurement, finance, inventory, sales & production data',
+      'Process with Multi-Agent CFO AI (Finance, Coordination, General)',
+      'Access live business data via Supabase MCP',
+      'Run conversational analytics across procurement, finance & inventory',
+      'Deliver CFO-level decisions & data-driven recommendations'
+    ],
+    workflowImageUrl: cfoWorkflow,
+    demoUrl: 'https://drive.google.com/file/d/1z0PSRHwg-g3JtSOOVp01nU0fg3XRaaxG/preview',
   }
 ];
 

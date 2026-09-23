@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Search, ArrowRight, ShieldCheck, Lock, Store } from 'lucide-react';
+import { Search, ArrowRight, ShieldCheck, Lock, Store, Landmark } from 'lucide-react';
 import './pages.css';
 
 export default function HomePage() {
@@ -14,6 +14,7 @@ export default function HomePage() {
   const showCompliance = !query || 'compliance'.includes(query);
   const showInfosec = !query || 'infosec'.includes(query) || 'security'.includes(query);
   const showRetail = !query || 'retail'.includes(query);
+  const showFinance = !query || 'finance'.includes(query);
 
   return (
     <div className="home-page">
@@ -31,7 +32,7 @@ export default function HomePage() {
               <Search size={20} className="search-icon" />
               <input 
                 type="text" 
-                placeholder="Search by Solution Domain (e.g., Compliance, Retail)..." 
+                placeholder="Search by Solution Domain (e.g., Compliance, Retail, Finance)..." 
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
               />
@@ -90,8 +91,21 @@ export default function HomePage() {
               </div>
             </Link>
           )}
+
+          {showFinance && (
+            <Link to="/domain/finance" className="domain-card featured">
+              <div className="domain-icon-wrapper">
+                <Landmark size={32} />
+              </div>
+              <h3>Finance</h3>
+              <p>Solutions for financial operations, risk, and reporting.</p>
+              <div className="domain-link">
+                Explore Domain <ArrowRight size={16} />
+              </div>
+            </Link>
+          )}
           
-          {!showCompliance && !showInfosec && !showRetail && (
+          {!showCompliance && !showInfosec && !showRetail && !showFinance && (
             <div style={{ padding: '2rem', textAlign: 'center', gridColumn: '1 / -1' }}>
               <p>No solution domains found for "{searchQuery}".</p>
             </div>

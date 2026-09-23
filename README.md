@@ -1,116 +1,57 @@
 # SNS Square - Solution Hub (Client Demo)
 
-This is the internal repository for the **SNS Square Product Showcase** platform. It acts as a central hub presenting various enterprise solutions (Security, Compliance, AI & Automation, Data & Analytics).
+React frontend for the SNS Square product showcase. The API lives in a separate project, `Client-demo-backend`.
 
-## 🏗 Architecture & Tech Stack
+## Frontend
 
-This project is structured as a full-stack JavaScript/TypeScript application, combining a modern React frontend with a robust Node.js backend.
-
-### Frontend
 - **Framework**: React 19 + TypeScript
 - **Build Tool**: Vite
 - **Styling & UI**: Tailwind CSS (Lucide-react for icons, clsx for conditional classes)
 - **Routing**: React Router DOM (v7)
 
-### Backend
-- **Runtime**: Node.js (v22+)
-- **Framework**: Express.js
-- **Database**: MongoDB (Mongoose ORM)
-- **Authentication**: JWT & bcrypt
+## Local development
 
-### DevOps & Infrastructure
-- **Containerization**: Docker (Multi-stage build)
-- **CI/CD**: Jenkins
+### Prerequisites
 
----
+- Node.js 18 or newer
+- The backend API running on port 5001
 
-## 🚀 Local Development Setup
-
-To run this project locally, follow these steps:
-
-### 1. Prerequisites
-- **Node.js** (v18 or higher recommended)
-- **MongoDB** (Local instance or Atlas URI)
-
-### 2. Environment Variables
-
-Create a `.env` file inside the `server/` directory and configure the following variables:
-
-```env
-PORT=5001
-MONGODB_URI=mongodb://[your-connection-string]
-FRONTEND_URL=http://localhost:5173
-```
-> Note: Refer to `server/.env.example` if available.
-
-### 3. Installation
-
-You need to install dependencies for both the frontend and backend.
+### Install and run
 
 ```bash
-# Install frontend dependencies
 npm install
-
-# Install backend dependencies
-cd server
-npm install
-cd ..
-```
-
-### 4. Running the Application
-
-This project uses `concurrently` to run both the frontend (Vite) and backend (Express) development servers simultaneously from the root folder.
-
-```bash
-# Start both frontend and backend servers
 npm run dev
 ```
 
-- **Frontend App**: [http://localhost:5173](http://localhost:5173)
-- **Backend API**: [http://localhost:5001/api](http://localhost:5001/api)
+The app is at [http://localhost:5174](http://localhost:5174). Vite proxies `/api` to `http://localhost:5001`, so login works against the local API without setting `VITE_API_BASE_URL`.
 
----
+For a deployed frontend, set `VITE_API_BASE_URL` to the public API origin before `npm run build`.
 
-## 🐳 Docker Deployment
+## Docker
 
-The project includes a multi-stage `Dockerfile` which builds the React frontend and serves it as static files via the Express backend.
+The image builds the React app and serves the static files with nginx.
 
 ```bash
-# Build the Docker image
-docker build -t sns-square-solution-hub:latest .
-
-# Run the container
-docker run -p 5001:5001 --env-file server/.env sns-square-solution-hub:latest
+docker build -t sns-square-frontend:latest .
+docker run -p 8080:80 sns-square-frontend:latest
 ```
 
-## 🔄 CI/CD Pipeline
+## CI/CD
 
-The repository includes a `Jenkinsfile` for automated builds. 
-The pipeline stages include:
-1. **Clean Workspace & Checkout**
-2. **Build Docker Image** (Tagged with `BUILD_ID`)
-3. **Security Scan** (Placeholder for Trivy / SonarQube)
-4. **Deploy** (To be configured with internal orchestration logic, e.g., AWS ECS)
+`Jenkinsfile` installs dependencies, builds the React app, uploads `dist/` to S3, and invalidates CloudFront. `VITE_API_BASE_URL` is set in that pipeline so the built app calls the deployed API.
 
----
-
-## 📂 Project Structure
+## Project structure
 
 ```text
 .
-├── server/                 # Express backend application
-│   ├── models/             # Mongoose schemas
-│   ├── routes/             # API endpoints (auth, etc.)
-│   ├── middleware/         # Express middlewares
-│   ├── server.js           # Backend entry point
-│   └── package.json        # Backend dependencies
-├── src/                    # React frontend application
-│   ├── components/         # Reusable UI components
-│   ├── data/               # Mock data (mockData.ts) and types (models.ts)
-│   ├── pages/              # Route pages (ProductDetailPage, etc.)
-│   └── App.tsx             # Main React component
-├── Dockerfile              # Production multi-stage build configuration
-├── Jenkinsfile             # Jenkins CI/CD pipeline
-├── package.json            # Root configuration & concurrent scripts
-└── vite.config.ts          # Vite configuration and proxy setup
+├── src/                 # React application
+│   ├── components/
+│   ├── data/
+│   ├── pages/
+│   └── App.tsx
+├── Dockerfile           # Frontend image
+├── Jenkinsfile          # Frontend deploy pipeline
+├── nginx.conf           # SPA routing for the Docker image
+├── package.json
+└── vite.config.ts       # Dev server and /api proxy
 ```

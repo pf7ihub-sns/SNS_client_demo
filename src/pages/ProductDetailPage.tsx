@@ -33,10 +33,12 @@ export default function ProductDetailPage() {
   }
 
   const handleWatchDemo = () => {
-    if (isInternal) {
-      setIsVideoModalOpen(true);
-    } else {
+    if (!isInternal) {
       setRestrictedResource('Demo Video');
+      return;
+    }
+    if (product?.demoUrl) {
+      setIsVideoModalOpen(true);
     }
   };
 
@@ -58,7 +60,7 @@ export default function ProductDetailPage() {
           <p className="showcase-short-desc">{product.shortDescription}</p>
           
           <div className="closing-actions" style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap', marginTop: '2rem' }}>
-            {product.demoUrl && (
+            {product.demoUrl !== undefined && (
               <button onClick={handleWatchDemo} className="btn-primary" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', gap: '8px', padding: '0.75rem 1.5rem', borderRadius: '6px', backgroundColor: '#2563eb', color: 'white', border: 'none', cursor: 'pointer', fontWeight: 500 }}>
                 <PlayCircle size={18} />
                 Watch Demo Video {!isInternal && <span style={{ fontSize: '10px', marginLeft: '4px' }}>🔒</span>}
