@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Search, ArrowRight, ShieldCheck, Lock, Store, Landmark, Umbrella } from 'lucide-react';
+import { Search, ArrowRight, ShieldCheck, Lock, Store, Landmark, Umbrella, Phone } from 'lucide-react';
 import './pages.css';
 
 export default function HomePage() {
@@ -16,6 +16,7 @@ export default function HomePage() {
   const showRetail = !query || 'retail'.includes(query);
   const showFinance = !query || 'finance'.includes(query);
   const showInsurance = !query || 'insurance'.includes(query);
+  const showTelecom = !query || 'telecom'.includes(query);
 
   return (
     <div className="home-page">
@@ -118,8 +119,21 @@ export default function HomePage() {
               </div>
             </Link>
           )}
-          
-          {!showCompliance && !showInfosec && !showRetail && !showFinance && !showInsurance && (
+
+          {showTelecom && (
+            <Link to="/domain/telecom" className="domain-card featured">
+              <div className="domain-icon-wrapper">
+                <Phone size={32} />
+              </div>
+              <h3>Telecom</h3>
+              <p>AI-powered solutions for telecom billing, usage monitoring, and revenue assurance.</p>
+              <div className="domain-link">
+                Explore Domain <ArrowRight size={16} />
+              </div>
+            </Link>
+          )}
+
+          {!showCompliance && !showInfosec && !showRetail && !showFinance && !showInsurance && !showTelecom && (
             <div style={{ padding: '2rem', textAlign: 'center', gridColumn: '1 / -1' }}>
               <p>No solution domains found for "{searchQuery}".</p>
             </div>
