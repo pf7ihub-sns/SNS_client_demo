@@ -3,6 +3,10 @@ import wcBanner from '../assets/WC-banner.png';
 import chatBanner from '../assets/Chat-Banner.png';
 import wcWorkflow from '../assets/WC-WF.png';
 import cfoWorkflow from '../assets/CA-WF.png';
+import autoRejectionBanner from '../assets/insurance-banner.png';
+import claimValidationBanner from '../assets/claim-validation-banner.png';
+import claimRoutingBanner from '../assets/routing-banner.png';
+import customerSupportBanner from '../assets/chat-support-banner.png';
 
 export const domains: Domain[] = [
   {
@@ -52,6 +56,14 @@ export const domains: Domain[] = [
     iconName: 'Landmark',
     featured: true,
     products: ['finance-01', 'finance-02'],
+  },
+  {
+    id: 'insurance',
+    name: 'Insurance',
+    description: 'AI solutions for claim rejections, validation, routing, and customer support.',
+    iconName: 'Umbrella',
+    featured: true,
+    products: ['insurance-01', 'insurance-02', 'insurance-03', 'insurance-04'],
   },
 ];
 
@@ -354,6 +366,123 @@ export const products: Product[] = [
     ],
     workflowImageUrl: cfoWorkflow,
     demoUrl: 'https://drive.google.com/file/d/1znPAX9NTqAs9NN-oaMVSd0Sjk4VJVwOZ/preview',
+  },
+  {
+    id: 'insurance-01',
+    name: 'Auto Rejections',
+    slug: 'auto-rejections',
+    domainId: 'insurance',
+    category: 'Claims Automation',
+    shortDescription: 'AI-driven solution that automatically identifies and rejects ineligible claims based on policy rules, coverage, and documentation, with a clear reason for every rejection.',
+    useCase: 'AI-driven solution that automatically identifies and rejects ineligible claims based on policy rules, coverage, and documentation, with a clear reason for every rejection.',
+    descriptionPoints: [
+      'Checks every incoming claim against policy status, coverage limits, waiting periods, and exclusions.',
+      'Detects lapsed policies, non-covered treatments or losses, duplicate submissions, and claims filed outside allowed timelines.',
+      'Automatically rejects clearly ineligible claims and generates a rejection letter for the claimant.',
+      'Sends borderline cases to a human reviewer, and keeps an audit trail of every decision for compliance.'
+    ],
+    keyCapabilities: [
+      'Policy Eligibility Checks',
+      'Exclusion & Waiting-Period Rules',
+      'Lapsed Policy Detection',
+      'Duplicate Claim Detection',
+      'Timeline Validation',
+      'Automated Rejection Letters',
+      'Human Review for Edge Cases',
+      'Decision Audit Trail'
+    ],
+    status: 'Active',
+    featured: true,
+    isNew: true,
+    tags: ['Insurance', 'Claims', 'Automation', 'AI'],
+    heroImageUrl: autoRejectionBanner,
+    siteUrl: 'https://insurance.snsquare.com',
+  },
+  {
+    id: 'insurance-02',
+    name: 'AI Accelerated Claim Validation',
+    slug: 'ai-accelerated-claim-validation',
+    domainId: 'insurance',
+    category: 'Claim Validation',
+    shortDescription: 'AI-driven solution that extracts and validates claim documents, verifies coverage, and flags inconsistencies to cut claim validation time from days to minutes.',
+    useCase: 'AI-driven solution that extracts and validates claim documents, verifies coverage, and flags inconsistencies to cut claim validation time from days to minutes.',
+    descriptionPoints: [
+      'Extracts data from claim forms, invoices, bills, reports, and photos using document AI.',
+      'Verifies the claimant, policy details, and coverage for every claim.',
+      'Cross-checks information across all claim documents and flags mismatches and suspicious patterns before the claim moves forward.',
+      'Produces a validation summary with a confidence score so adjusters can approve clean claims in one step.'
+    ],
+    keyCapabilities: [
+      'Document AI Extraction',
+      'Coverage Verification',
+      'Claimant & Policy Matching',
+      'Inconsistency Flagging',
+      'Fraud Signal Detection',
+      'Validation Confidence Score',
+      'Adjuster Summary View'
+    ],
+    status: 'Active',
+    featured: true,
+    isNew: true,
+    tags: ['Insurance', 'Claims', 'Validation', 'AI'],
+    heroImageUrl: claimValidationBanner,
+    siteUrl: 'https://insurance.snsquare.com',
+  },
+  {
+    id: 'insurance-03',
+    name: 'Intelligent Claim Routing',
+    slug: 'intelligent-claim-routing',
+    domainId: 'insurance',
+    category: 'Claim Routing',
+    shortDescription: 'AI-driven solution that classifies claims by type, complexity, severity, and risk and routes each one to the right team, queue, or adjuster automatically.',
+    useCase: 'AI-driven solution that classifies claims by type, complexity, severity, and risk and routes each one to the right team, queue, or adjuster automatically.',
+    descriptionPoints: [
+      'Classifies each claim by line of business, claim type, complexity, severity, and fraud risk.',
+      'Fast-tracks simple, low-risk claims and sends complex or high-value claims to senior adjusters.',
+      'Balances workload across teams and queues based on availability, location, and current caseload.',
+      'Tracks routing outcomes and turnaround times to keep improving routing accuracy.'
+    ],
+    keyCapabilities: [
+      'Claim Classification',
+      'Complexity & Severity Scoring',
+      'Risk-Based Prioritization',
+      'Workload Balancing',
+      'SIU Referral Routing',
+      'Routing Analytics'
+    ],
+    status: 'Active',
+    featured: true,
+    isNew: true,
+    tags: ['Insurance', 'Claims', 'Routing', 'AI'],
+    heroImageUrl: claimRoutingBanner,
+    siteUrl: 'https://insurance.snsquare.com',
+  },
+  {
+    id: 'insurance-04',
+    name: 'AI Powered Customer Support',
+    slug: 'ai-powered-customer-support',
+    domainId: 'insurance',
+    category: 'Customer Support',
+    shortDescription: 'Conversational AI assistant that answers policyholder questions and provides real-time claim status in natural language.',
+    useCase: 'Conversational AI assistant that answers policyholder questions and provides real-time claim status in natural language.',
+    descriptionPoints: [
+      'Answers questions on coverage, premiums, renewals, and claim procedures using policy documents and core system data.',
+      'Gives policyholders real-time claim status and expected settlement timelines.',
+      "Explains coverage, benefits, and exclusions in plain language, in the customer's preferred language."
+    ],
+    keyCapabilities: [
+      'Natural Language Q&A',
+      'Real-Time Claim Status',
+      'Coverage Explanation',
+      'Multilingual Support',
+      'Support Analytics'
+    ],
+    status: 'Active',
+    featured: true,
+    isNew: true,
+    tags: ['Insurance', 'Customer Support', 'Conversational AI'],
+    heroImageUrl: customerSupportBanner,
+    siteUrl: 'https://insurance.snsquare.com',
   }
 ];
 

@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Search, ArrowRight, ShieldCheck, Lock, Store, Landmark } from 'lucide-react';
+import { Search, ArrowRight, ShieldCheck, Lock, Store, Landmark, Umbrella } from 'lucide-react';
 import './pages.css';
 
 export default function HomePage() {
@@ -15,6 +15,7 @@ export default function HomePage() {
   const showInfosec = !query || 'infosec'.includes(query) || 'security'.includes(query);
   const showRetail = !query || 'retail'.includes(query);
   const showFinance = !query || 'finance'.includes(query);
+  const showInsurance = !query || 'insurance'.includes(query);
 
   return (
     <div className="home-page">
@@ -32,7 +33,7 @@ export default function HomePage() {
               <Search size={20} className="search-icon" />
               <input 
                 type="text" 
-                placeholder="Search by Solution Domain (e.g., Compliance, Retail, Finance)..." 
+                placeholder="Search by Solution Domain (e.g., Compliance, Retail, Finance, Insurance)..." 
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
               />
@@ -104,8 +105,21 @@ export default function HomePage() {
               </div>
             </Link>
           )}
+
+          {showInsurance && (
+            <Link to="/domain/insurance" className="domain-card featured">
+              <div className="domain-icon-wrapper">
+                <Umbrella size={32} />
+              </div>
+              <h3>Insurance</h3>
+              <p>AI solutions for claim rejections, validation, routing, and customer support.</p>
+              <div className="domain-link">
+                Explore Domain <ArrowRight size={16} />
+              </div>
+            </Link>
+          )}
           
-          {!showCompliance && !showInfosec && !showRetail && !showFinance && (
+          {!showCompliance && !showInfosec && !showRetail && !showFinance && !showInsurance && (
             <div style={{ padding: '2rem', textAlign: 'center', gridColumn: '1 / -1' }}>
               <p>No solution domains found for "{searchQuery}".</p>
             </div>
