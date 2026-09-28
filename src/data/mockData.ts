@@ -7,6 +7,7 @@ import autoRejectionBanner from '../assets/insurance-banner.png';
 import claimValidationBanner from '../assets/claim-validation-banner.png';
 import claimRoutingBanner from '../assets/routing-banner.png';
 import customerSupportBanner from '../assets/chat-support-banner.png';
+import retailReturnBanner from '../assets/Retail E-commerce return, refund & reverse logistic chatbot.png';
 
 export const domains: Domain[] = [
   {
@@ -47,7 +48,7 @@ export const domains: Domain[] = [
     description: 'Innovative solutions tailored for modern retail businesses.',
     iconName: 'Store',
     featured: true,
-    products: ['retail-01'],
+    products: ['retail-01', 'retail-02'],
   },
   {
     id: 'finance',
@@ -254,6 +255,40 @@ export const products: Product[] = [
     heroImageUrl: '/images/supply_chain.jpg',
     demoUrl: 'https://drive.google.com/file/d/10-c79McvyqNEdR6RJxgPbaeaRE-PdotA/preview',
     siteUrl: 'https://retail.snssquare.com/'
+  },
+  {
+    id: 'retail-02',
+    name: 'AI Powered E-Commerce Return, Refund & Reverse Logistics Chatbot',
+    slug: 'ai-ecommerce-return-refund-reverse-logistics-chatbot',
+    domainId: 'retail',
+    category: 'Returns & Reverse Logistics',
+    shortDescription: 'AI-driven solution that automates the end-to-end return, refund, replacement, and reverse logistics lifecycle by validating customer, order, product, policy, fraud, image evidence, inventory availability, and quality inspection before driving the appropriate business action.',
+    useCase: 'AI-driven solution that automates the end-to-end return, refund, replacement, and reverse logistics lifecycle.\n\nValidates customer identity, order details, product eligibility, and return policy compliance before processing any request.\n\nDetects fraud signals and analyzes image evidence to ensure only legitimate returns are approved.\n\nOrchestrates reverse logistics, inventory restocking, and quality inspection workflows automatically.',
+    descriptionPoints: [
+      'Intelligent Return & Refund Processing validates customer, order, product, delivery status, return window, and policy eligibility before processing the request.',
+      'AI-Powered Fraud & Risk Detection analyzes customer history, repeated requests, fraud indicators, and customer-tier-specific risk patterns to identify suspicious activity.',
+      'AI Image & Product Validation validates damage, defects, product mismatch, missing components, and detects AI-generated supporting images before approving returns.',
+      'Smart Replacement & Inventory Recommendation checks real-time product availability and recommends verified in-stock replacement products when the requested product is unavailable.',
+      'End-to-End Reverse Logistics Automation automates pickup, delivery-agent assignment, warehouse receiving, QC inspection, refund/replacement processing, and customer notifications.'
+    ],
+    keyCapabilities: [
+      'Return & Refund Automation',
+      'Policy & Eligibility Validation',
+      'Tier-Based Fraud Detection',
+      'Product Mismatch Detection',
+      'AI Image Validation',
+      'Out-of-Stock Replacement Recommendation',
+      'Reverse Logistics Orchestration',
+      'Pickup & Delivery Coordination',
+      'Automated Customer Notifications'
+    ],
+    status: 'Active',
+    featured: true,
+    isNew: true,
+    tags: ['Returns','Fraud Detection', 'Image Detection', 'AI'],
+    heroImageUrl: retailReturnBanner,
+    demoUrl: 'https://drive.google.com/file/d/1XgTeSWDV1D6zU2bcSVOIqGS9Jvv03omW/preview',
+    resourcesUrl: 'https://drive.google.com/drive/folders/1TdMPmoP1iWFupB4lW8gnTpDVkgeI90YD?usp=sharing',
   },
   {
     id: 'comp-09',

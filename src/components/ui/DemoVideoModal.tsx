@@ -91,8 +91,8 @@ export default function DemoVideoModal({ isOpen, onClose, title, videoUrl, provi
           <div style={{ 
             position: 'relative',
             width: '100%',
+            height: '100%',
             maxWidth: '1440px',
-            aspectRatio: '16/9',
             background: 'black',
             borderRadius: '12px',
             overflow: 'hidden',

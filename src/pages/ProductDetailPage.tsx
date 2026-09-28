@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useParams, Navigate, useLocation } from 'react-router-dom';
-import { PlayCircle, ExternalLink, CheckCircle2 } from 'lucide-react';
+import { PlayCircle, ExternalLink, CheckCircle2, FolderOpen } from 'lucide-react';
 import { products } from '../data/mockData';
 import { useAuth } from '../context/AuthContext';
 import RestrictedAccessModal from '../components/auth/RestrictedAccessModal';
@@ -84,6 +84,18 @@ export default function ProductDetailPage() {
                 </button>
               )
             )}
+            {product.resourcesUrl && (
+              <a
+                href={product.resourcesUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-primary"
+                style={{ display: 'flex', alignItems: 'center', gap: '8px', padding: '0.75rem 1.5rem', borderRadius: '6px', backgroundColor: '#2563eb', color: 'white', border: 'none', cursor: 'pointer', fontWeight: 500, textDecoration: 'none' }}
+              >
+                <FolderOpen size={18} />
+                View Resources
+              </a>
+            )}
             {product.workflowSteps && product.workflowSteps.length > 0 && (
               <button 
                 className="btn-secondary-light" 
@@ -98,7 +110,12 @@ export default function ProductDetailPage() {
         
         <div className="showcase-hero-visual" style={{ marginTop: '2rem' }}>
           {product.heroImageUrl ? (
-             <img src={product.heroImageUrl} alt={`${product.name} Interface`} className="hero-product-image" />
+             <img
+               src={product.heroImageUrl}
+               alt={`${product.name} Interface`}
+               className="hero-product-image"
+               style={product.slug === 'ai-ecommerce-return-refund-reverse-logistics-chatbot' ? { maxHeight: '650px' } : undefined}
+             />
           ) : (
              <div className="hero-product-placeholder">
                <span>[ {product.name} UI Placeholder ]</span>

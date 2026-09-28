@@ -27,4 +27,5 @@ export interface Product {
   siteUrl?: string;
   workflowSteps?: string[];
   workflowImageUrl?: string;
+  resourcesUrl?: string;
 }
