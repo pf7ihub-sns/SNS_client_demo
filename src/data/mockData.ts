@@ -66,6 +66,14 @@ export const domains: Domain[] = [
     featured: true,
     products: ['insurance-01', 'insurance-02', 'insurance-03', 'insurance-04'],
   },
+  {
+    id: 'telecom',
+    name: 'Telecom',
+    description: 'AI-powered solutions for telecom billing, usage monitoring, and revenue assurance.',
+    iconName: 'Phone',
+    featured: true,
+    products: ['telecom-01'],
+  },
 ];
 
 export const products: Product[] = [
@@ -518,6 +526,48 @@ export const products: Product[] = [
     tags: ['Insurance', 'Customer Support', 'Conversational AI'],
     heroImageUrl: customerSupportBanner,
     siteUrl: 'https://insurance.snssquare.com',
+  },
+  {
+    id: 'telecom-01',
+    name: 'Billing Anomaly Detection',
+    slug: 'billing-anomaly-detection',
+    domainId: 'telecom',
+    category: 'Revenue Assurance',
+    shortDescription: 'Rule-based solution that continuously monitors telecom usage, rating, and billing data to automatically detect revenue leakage, overbilling, underbilling, and operational inconsistencies across the billing pipeline, with AI-powered guidance for resolution and prevention.',
+    useCase: 'Rule-based solution that continuously monitors telecom usage, rating, and billing data to automatically detect revenue leakage, overbilling, underbilling, and operational inconsistencies across the billing pipeline, with AI-powered guidance for resolution and prevention.',
+    descriptionPoints: [
+      'Continuously validates usage records against billing outputs, plan configurations, and conversion standards across mediation, rating, and billing systems using configurable business rules.',
+      'Detects unit conversion errors, cycle misalignments, delayed threshold alerts, unexpected counter resets, wrong tariff priorities, and prepaid balance inconsistencies.',
+      'Automatically calculates financial impact and classifies the most probable root cause for every detected anomaly.',
+      'Provides AI-assisted recommendations on the exact steps to resolve the issue and preventive actions to avoid recurrence.',
+      'Routes complex cases for human review while maintaining a complete audit trail of every detection and decision for compliance and operational transparency.'
+    ],
+    keyCapabilities: [
+      'Incorrect Unit Conversion Detection',
+      'Billing Cycle Misalignment Validation',
+      'Threshold Trigger Delay Monitoring',
+      'Usage Counter Reset Detection',
+      'Incorrect Rating Priority Checks',
+      'Prepaid Balance Sync Validation',
+      'Financial Impact Calculation',
+      'Automated Root Cause Classification',
+      'AI-Powered Resolution Guidance',
+      'Preventive Action Recommendations',
+      'Full Decision Audit Trail'
+    ],
+    status: 'Active',
+    featured: true,
+    isNew: true,
+    tags: ['Telecom', 'Billing', 'Revenue Assurance', 'AI'],
+    heroImageUrl: '/images/billing_anomaly_website.png',
+    workflowSteps: [
+      'Ingest usage records from mediation systems',
+      'Validate against billing outputs and plan configurations',
+      'Detect anomalies using configurable business rules',
+      'Calculate financial impact and classify root cause',
+      'Provide AI-powered resolution guidance and preventive actions'
+    ],
+    siteUrl: 'https://telecom.snssquare.com/'
   }
 ];
 
