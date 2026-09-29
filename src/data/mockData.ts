@@ -403,7 +403,7 @@ export const products: Product[] = [
     demoUrl: 'https://drive.google.com/file/d/1znPAX9NTqAs9NN-oaMVSd0Sjk4VJVwOZ/preview',
   },
   {
-    id: 'insurance-01',
+    id: 'insurance-03',
     name: 'Auto Rejections',
     slug: 'auto-rejections',
     domainId: 'insurance',
@@ -431,10 +431,10 @@ export const products: Product[] = [
     isNew: true,
     tags: ['Insurance', 'Claims', 'Automation', 'AI'],
     heroImageUrl: autoRejectionBanner,
-    siteUrl: 'https://insurance.snsquare.com',
+    siteUrl: 'https://insurance.snssquare.com',
   },
   {
-    id: 'insurance-02',
+    id: 'insurance-01',
     name: 'AI Accelerated Claim Validation',
     slug: 'ai-accelerated-claim-validation',
     domainId: 'insurance',
@@ -461,10 +461,10 @@ export const products: Product[] = [
     isNew: true,
     tags: ['Insurance', 'Claims', 'Validation', 'AI'],
     heroImageUrl: claimValidationBanner,
-    siteUrl: 'https://insurance.snsquare.com',
+    siteUrl: 'https://insurance.snssquare.com',
   },
   {
-    id: 'insurance-03',
+    id: 'insurance-02',
     name: 'Intelligent Claim Routing',
     slug: 'intelligent-claim-routing',
     domainId: 'insurance',
@@ -490,7 +490,7 @@ export const products: Product[] = [
     isNew: true,
     tags: ['Insurance', 'Claims', 'Routing', 'AI'],
     heroImageUrl: claimRoutingBanner,
-    siteUrl: 'https://insurance.snsquare.com',
+    siteUrl: 'https://insurance.snssquare.com',
   },
   {
     id: 'insurance-04',
@@ -517,7 +517,7 @@ export const products: Product[] = [
     isNew: true,
     tags: ['Insurance', 'Customer Support', 'Conversational AI'],
     heroImageUrl: customerSupportBanner,
-    siteUrl: 'https://insurance.snsquare.com',
+    siteUrl: 'https://insurance.snssquare.com',
   }
 ];
 
