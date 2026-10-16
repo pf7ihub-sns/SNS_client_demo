@@ -8,6 +8,7 @@ import claimValidationBanner from '../assets/claim-validation-banner.png';
 import claimRoutingBanner from '../assets/routing-banner.png';
 import customerSupportBanner from '../assets/chat-support-banner.png';
 import retailReturnBanner from '../assets/Retail E-commerce return, refund & reverse logistic chatbot.png';
+import demandForecastingBanner from '../assets/Demand Forecasting.png';
 
 export const domains: Domain[] = [
   {
@@ -48,7 +49,15 @@ export const domains: Domain[] = [
     description: 'Innovative solutions tailored for modern retail businesses.',
     iconName: 'Store',
     featured: true,
-    products: ['retail-01', 'retail-02'],
+    products: ['retail-01'],
+  },
+  {
+    id: 'supply-chain',
+    name: 'Supply Chain',
+    description: 'AI-powered supply chain solutions for demand forecasting, predictive planning, and end-to-end operational intelligence.',
+    iconName: 'Boxes',
+    featured: true,
+    products: ['SCL-01', 'SCL-02'],
   },
   {
     id: 'finance',
@@ -234,10 +243,10 @@ export const products: Product[] = [
     siteUrl: 'https://comgrcmanagement.snssquare.com'
   },
   {
-    id: 'retail-01',
+    id: 'SCL-01',
     name: 'Intelligent Supply Chain & Inventory Management',
     slug: 'intelligent-supply-chain-inventory-management',
-    domainId: 'retail',
+    domainId: 'supply-chain',
     category: 'Supply Chain & Inventory',
     shortDescription: 'AI-driven supply chain intelligence platform for inventory prioritization, predictive stockout prevention, and vendor performance optimization across multi-store retail and warehouse operations.',
     useCase: 'AI-driven supply chain intelligence platform for multi-store retail and warehouse operations.\n\nAddresses unexpected inventory stockouts through predictive stockout risk analysis.\n\nOptimizes replenishment prioritization using inventory movements, consumption velocity, and demand conditions.\n\nImproves vendor performance visibility through supplier fulfillment and performance analysis.',
@@ -265,7 +274,7 @@ export const products: Product[] = [
     siteUrl: 'https://retail.snssquare.com/'
   },
   {
-    id: 'retail-02',
+    id: 'retail-01',
     name: 'AI Powered E-Commerce Return, Refund & Reverse Logistics Chatbot',
     slug: 'ai-ecommerce-return-refund-reverse-logistics-chatbot',
     domainId: 'retail',
@@ -525,7 +534,7 @@ export const products: Product[] = [
     isNew: true,
     tags: ['Insurance', 'Customer Support', 'Conversational AI'],
     heroImageUrl: customerSupportBanner,
-    siteUrl: 'https://insurance.snssquare.com',
+    siteUrl: 'https://insurance.snsquare.com',
   },
   {
     id: 'telecom-01',
@@ -568,6 +577,38 @@ export const products: Product[] = [
       'Provide AI-powered resolution guidance and preventive actions'
     ],
     siteUrl: 'https://telecom.snssquare.com/'
+  },
+  {
+    id: 'SCL-02',
+    name: 'AI-Powered Demand Forecast & Predictive Planning Engine',
+    slug: 'ai-demand-forecast-predictive-planning-engine',
+    domainId: 'supply-chain',
+    category: 'Demand Forecasting & Planning',
+    shortDescription: 'An AI-driven predictive planning solution that generates executive-grade demand intelligence by analyzing festival seasonality, historical sales trends, inventory levels, and spike patterns — enabling retail teams to make precise, data-backed stocking and procurement decisions.',
+    useCase: 'An AI-driven predictive planning solution that generates executive-grade demand intelligence.\n\nAnalyzes festival seasonality, historical sales trends, inventory levels, and spike patterns.\n\nEnables retail teams to make precise, data-backed stocking and procurement decisions.',
+    descriptionPoints: [
+      'Festival Demand Forecasting analyzes festival calendars, seasonal patterns, and historical sales to generate granular product-level demand forecasts before peak retail windows.',
+      'AI Demand Intelligence Engine aggregates festival, store, product, and planning date inputs to produce executive-grade demand reports with actionable procurement recommendations.',
+      'Spike Observatory continuously monitors abnormal sales spikes, identifies root causes, and provides category-level context to help buyers differentiate genuine demand from noise.',
+      'Monthly Sales Trend Analysis delivers multi-SKU revenue tracking, category performance breakdowns, and MoM growth comparison across all store locations.',
+      'Inventory Optimisation cross-references current stock levels with forecast demand to highlight overstock, stockout risk, and optimal replenishment quantities.'
+    ],
+    keyCapabilities: [
+      'Festival Demand Forecasting',
+      'AI Demand Intelligence Engine',
+      'Spike Observatory & Detection',
+      'Monthly Sales Trend Analysis',
+      'Inventory Optimisation',
+      'Historical Validation',
+      'Festival Intelligence Dashboard',
+      'Automated Forecast Generation',
+      'Store-Level Planning'
+    ],
+    status: 'Active',
+    featured: true,
+    isNew: true,
+    tags: ['Demand Forecasting', 'Festival Intelligence', 'AI', 'Inventory'],
+    heroImageUrl: demandForecastingBanner,
   }
 ];
 

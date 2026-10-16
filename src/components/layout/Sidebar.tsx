@@ -1,5 +1,5 @@
 import { Link, useLocation } from 'react-router-dom';
-import { LayoutDashboard, ShieldCheck, ChevronRight, Menu, Lock, Store, Landmark, ClipboardCheck, Phone } from 'lucide-react';
+import { LayoutDashboard, ShieldCheck, ChevronRight, Menu, Lock, Store, Landmark, ClipboardCheck, Phone, Boxes } from 'lucide-react';
 import { useState } from 'react';
 
 export default function Sidebar() {
@@ -103,6 +103,16 @@ export default function Sidebar() {
               <Phone size={20} />
               <span>Telecom</span>
               {isActive('/domain/telecom') && <ChevronRight size={16} className="ml-auto" />}
+            </Link>
+
+            <Link
+              to="/domain/supply-chain"
+              className={`nav-item ${isActive('/domain/supply-chain') ? 'active' : ''}`}
+              onClick={() => setIsMobileOpen(false)}
+            >
+              <Boxes size={20} />
+              <span>Supply Chain</span>
+              {isActive('/domain/supply-chain') && <ChevronRight size={16} className="ml-auto" />}
             </Link>
           </div>
         </nav>
