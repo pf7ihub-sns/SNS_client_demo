@@ -34,7 +34,7 @@ export default function HomePage() {
               <Search size={20} className="search-icon" />
               <input 
                 type="text" 
-                placeholder="Search by Solution Domain (e.g., Compliance, Retail, Finance, Insurance)..." 
+                placeholder="Search solutions by domain (e.g., Compliance, Infosec, Retail)..." 
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
               />
@@ -43,8 +43,10 @@ export default function HomePage() {
           </div>
         </div>
 
-        <div className="hero-visual" style={{ flex: 1, display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-          <img src="/logo.png" alt="SNS Square Solution Hub" style={{ maxWidth: '300px', height: 'auto' }} />
+        <div className="hero-visual">
+          <div className="hero-logo-wrapper">
+            <img src="/logo.png" alt="SNS Square Solution Hub" className="hero-logo" />
+          </div>
         </div>
       </section>
 

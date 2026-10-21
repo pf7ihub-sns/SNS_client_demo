@@ -48,14 +48,14 @@ export default function SearchResultsPage() {
       </div>
 
       <div className="catalog-controls">
-        <form className="catalog-search" onSubmit={handleSearch} style={{ width: '100%', maxWidth: '600px' }}>
+        <form className="catalog-search" onSubmit={handleSearch}>
           <Search size={18} className="search-icon" />
           <input 
             type="text" 
-            placeholder="Search by Solution Domain (e.g., Compliance, Retail)..." 
+            placeholder="Search solutions by domain (e.g., Compliance, Retail)..." 
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            style={{ width: '100%' }}
+            aria-label="Search solutions by domain"
           />
         </form>
       </div>

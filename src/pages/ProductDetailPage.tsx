@@ -59,62 +59,57 @@ export default function ProductDetailPage() {
           <h1 className="showcase-title">{product.name}</h1>
           <p className="showcase-short-desc">{product.shortDescription}</p>
           
-          <div className="closing-actions" style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap', marginTop: '2rem' }}>
+          <div className="detail-actions-row">
             {product.demoUrl !== undefined && (
-              <button onClick={handleWatchDemo} className="btn-primary" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', gap: '8px', padding: '0.75rem 1.5rem', borderRadius: '6px', backgroundColor: '#2563eb', color: 'white', border: 'none', cursor: 'pointer', fontWeight: 500 }}>
+              <button onClick={handleWatchDemo} className="btn-primary-action">
                 <PlayCircle size={18} />
-                Watch Demo Video {!isInternal && <span style={{ fontSize: '10px', marginLeft: '4px' }}>🔒</span>}
+                <span>Watch Demo Video</span> {!isInternal && <span className="lock-indicator">🔒</span>}
               </button>
             )}
             {product.siteUrl !== undefined && (
-              product.siteUrl ? (
-                <button onClick={(e) => {
+              <button 
+                onClick={(e) => {
                   if (!isInternal) {
                     e.preventDefault();
                     setRestrictedResource('Live Demo');
-                  } else {
+                  } else if (product.siteUrl) {
                     window.open(product.siteUrl, '_blank', 'noopener,noreferrer');
                   }
-                }} className="btn-primary" style={{ display: 'flex', alignItems: 'center', gap: '8px', padding: '0.75rem 1.5rem', borderRadius: '6px', backgroundColor: '#2563eb', color: 'white', border: 'none', cursor: 'pointer', fontWeight: 500 }}>
-                  Visit Website <ExternalLink size={18} /> {!isInternal && <span style={{ fontSize: '10px', marginLeft: '4px' }}>🔒</span>}
-                </button>
-              ) : (
-                <button className="btn-primary" onClick={() => !isInternal && setRestrictedResource('Live Demo')} style={{ display: 'flex', alignItems: 'center', gap: '8px', padding: '0.75rem 1.5rem', borderRadius: '6px', backgroundColor: '#2563eb', color: 'white', border: 'none', cursor: 'pointer', fontWeight: 500 }}>
-                  Visit Website <ExternalLink size={18} /> {!isInternal && <span style={{ fontSize: '10px', marginLeft: '4px' }}>🔒</span>}
-                </button>
-              )
+                }} 
+                className="btn-primary-action"
+              >
+                <span>Visit Website</span> <ExternalLink size={16} /> {!isInternal && <span className="lock-indicator">🔒</span>}
+              </button>
             )}
             {product.resourcesUrl && (
               <a
                 href={product.resourcesUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="btn-primary"
-                style={{ display: 'flex', alignItems: 'center', gap: '8px', padding: '0.75rem 1.5rem', borderRadius: '6px', backgroundColor: '#2563eb', color: 'white', border: 'none', cursor: 'pointer', fontWeight: 500, textDecoration: 'none' }}
+                className="btn-primary-action"
               >
                 <FolderOpen size={18} />
-                View Resources
+                <span>View Resources</span>
               </a>
             )}
             {product.workflowSteps && product.workflowSteps.length > 0 && (
               <button 
-                className="btn-secondary-light" 
+                className="btn-secondary-action" 
                 onClick={handleViewWorkflow}
-                style={{ display: 'flex', alignItems: 'center', gap: '8px', padding: '0.75rem 1.5rem', borderRadius: '6px', backgroundColor: 'transparent', color: 'var(--text-primary)', border: '1px solid var(--border-color)', cursor: 'pointer', fontWeight: 500 }}
               >
-                View Workflow {!isInternal && <span style={{ fontSize: '10px', marginLeft: '4px' }}>🔒</span>}
+                <span>View Workflow</span> {!isInternal && <span className="lock-indicator">🔒</span>}
               </button>
             )}
           </div>
         </div>
         
-        <div className="showcase-hero-visual" style={{ marginTop: '2rem' }}>
+        <div className="showcase-hero-visual">
           {product.heroImageUrl ? (
              <img
                src={product.heroImageUrl}
                alt={`${product.name} Interface`}
                className="hero-product-image"
-               style={product.slug === 'ai-ecommerce-return-refund-reverse-logistics-chatbot' ? { maxHeight: '650px' } : undefined}
+               style={product.slug === 'ai-ecommerce-return-refund-reverse-logistics-chatbot' ? { maxHeight: '420px' } : undefined}
              />
           ) : (
              <div className="hero-product-placeholder">
@@ -124,31 +119,32 @@ export default function ProductDetailPage() {
         </div>
       </section>
 
-      {/* 4. KEY CAPABILITIES */}
-      <section className="showcase-capabilities" style={{ paddingTop: '2rem', paddingBottom: '3rem' }}>
+      {/* 2. KEY CAPABILITIES */}
+      <section className="showcase-capabilities">
         <div className="section-container">
-          <h2 className="section-title" style={{ textAlign: 'center', marginBottom: '2rem' }}>Key Capabilities</h2>
-          <div className="capabilities-grid-compact" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '1.5rem', maxWidth: '1000px', margin: '0 auto' }}>
+          <h2 className="detail-section-title">Key Capabilities</h2>
+          <div className="capabilities-grid-compact">
             {product.keyCapabilities.map((cap, idx) => (
-              <div key={idx} className="capability-card-compact" style={{ display: 'flex', alignItems: 'center', gap: '12px', padding: '1.5rem', backgroundColor: '#ffffff', borderRadius: '12px', border: '1px solid #e2e8f0', boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)', transition: 'transform 0.2s, box-shadow 0.2s' }}>
-                <CheckCircle2 size={20} className="text-accent" style={{ flexShrink: 0 }} />
-                <h4 className="cap-title" style={{ margin: 0, fontSize: '0.95rem', fontWeight: 500, color: 'var(--text-primary)' }}>{cap}</h4>
+              <div key={idx} className="capability-card-compact">
+                <CheckCircle2 size={18} style={{ color: 'var(--color-brand-blue)', flexShrink: 0, marginTop: '2px' }} />
+                <h4 className="cap-title">{cap}</h4>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* DESCRIPTION (COMBINED) */}
-      <section className="showcase-editorial" style={{ paddingTop: '2rem', paddingBottom: '2rem' }}>
+      {/* 3. DESCRIPTION */}
+      <section className="showcase-editorial">
         <div className="editorial-container">
           <div className="editorial-title-col">
             <h2>Description</h2>
+            <p className="editorial-subtitle">Overview & Specifications</p>
           </div>
           <div className="editorial-text-col">
-            <ul style={{ fontSize: '1.1rem', lineHeight: '1.8', color: 'var(--text-secondary)', paddingLeft: '1.5rem', margin: 0 }}>
+            <ul className="description-bullet-list">
               {product.descriptionPoints.map((point, idx) => (
-                <li key={idx} style={{ marginBottom: '0.5rem' }}>{point}</li>
+                <li key={idx} className="description-bullet-item">{point}</li>
               ))}
             </ul>
           </div>
