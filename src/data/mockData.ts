@@ -71,7 +71,7 @@ export const domains: Domain[] = [
     id: 'insurance',
     name: 'Insurance',
     description: 'AI solutions for claim rejections, validation, routing, and customer support.',
-    iconName: 'Umbrella',
+    iconName: 'ClipboardCheck',
     featured: true,
     products: ['insurance-01', 'insurance-02', 'insurance-03', 'insurance-04'],
   },

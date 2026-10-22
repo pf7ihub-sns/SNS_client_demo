@@ -56,11 +56,21 @@ export default function DomainCatalogPage() {
             placeholder={`Search ${domain.name} solutions...`} 
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
+            aria-label={`Search ${domain.name} solutions`}
           />
         </div>
         
         <div className="catalog-filters-wrapper">
-          <SlidersHorizontal size={18} className="text-muted" />
+          <div 
+            className="filter-control-badge" 
+            tabIndex={0}
+            role="region"
+            aria-label="Filter solutions by status"
+          >
+            <SlidersHorizontal size={16} className="filter-icon" />
+            <span className="filter-label">Filter:</span>
+            <span className="filter-tooltip-bubble" role="tooltip">Filter solutions by status</span>
+          </div>
           <FilterBar 
             filters={FILTERS} 
             activeFilter={activeFilter} 

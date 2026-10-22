@@ -27,6 +27,9 @@ export default function ProductCard({ product }: ProductCardProps) {
           {product.status === 'Beta' && (
              <span className="badge warning">Beta</span>
           )}
+          {!product.featured && !product.isNew && product.status !== 'Beta' && (
+             <span className="badge standard">Solution</span>
+          )}
         </div>
         <div className="product-brand">SNS SQUARE</div>
       </div>

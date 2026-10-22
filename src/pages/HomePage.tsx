@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Search, ArrowRight, ShieldCheck, Lock, Store, Landmark, Umbrella, Phone } from 'lucide-react';
+import { Search, ArrowRight, ShieldCheck, Lock, Store, Landmark, ClipboardCheck, Phone } from 'lucide-react';
 import './pages.css';
 
 export default function HomePage() {
@@ -34,7 +34,7 @@ export default function HomePage() {
               <Search size={20} className="search-icon" />
               <input 
                 type="text" 
-                placeholder="Search by Solution Domain (e.g., Compliance, Retail, Finance, Insurance)..." 
+                placeholder="Search solutions by domain (e.g., Compliance, Infosec, Retail)..." 
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
               />
@@ -43,8 +43,10 @@ export default function HomePage() {
           </div>
         </div>
 
-        <div className="hero-visual" style={{ flex: 1, display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-          <img src="/logo.png" alt="SNS Square Solution Hub" style={{ maxWidth: '300px', height: 'auto' }} />
+        <div className="hero-visual">
+          <div className="hero-logo-wrapper">
+            <img src="/logo.png" alt="SNS Square Solution Hub" className="hero-logo" />
+          </div>
         </div>
       </section>
 
@@ -110,7 +112,7 @@ export default function HomePage() {
           {showInsurance && (
             <Link to="/domain/insurance" className="domain-card featured">
               <div className="domain-icon-wrapper">
-                <Umbrella size={32} />
+                <ClipboardCheck size={32} />
               </div>
               <h3>Insurance</h3>
               <p>AI solutions for claim rejections, validation, routing, and customer support.</p>
