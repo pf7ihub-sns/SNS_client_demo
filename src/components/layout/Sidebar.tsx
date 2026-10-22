@@ -11,8 +11,7 @@ import {
   ClipboardCheck, 
   Phone, 
   Layers, 
-  Package, 
-  Target 
+  Package
 } from 'lucide-react';
 import { useState } from 'react';
 
@@ -152,7 +151,7 @@ export default function Sidebar() {
                 className={`nav-item ${isActive('/products/okrion') ? 'active' : ''}`}
                 onClick={() => setIsMobileOpen(false)}
               >
-                <Target size={18} />
+                <img src="/images/okrion/okionicon.png" alt="" width={18} height={18} style={{ objectFit: 'contain', flexShrink: 0 }} />
                 <span>OKRion</span>
                 {isActive('/products/okrion') && <ChevronRight size={14} className="ml-auto" />}
               </Link>

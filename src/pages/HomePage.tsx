@@ -9,7 +9,6 @@ import {
   Landmark, 
   ClipboardCheck, 
   Phone, 
-  Target, 
   Layers, 
   Package, 
   Sparkles 
@@ -121,10 +120,10 @@ export default function HomePage() {
             {showOkrion && (
               <Link to="/products/okrion" className="domain-card featured">
                 <div className="domain-icon-wrapper">
-                  <Target size={32} />
+                  <img src="/images/okrion/okionicon.png" alt="" width={32} height={32} style={{ objectFit: 'contain' }} />
                 </div>
                 <h3>OKRion</h3>
-                <p>Intelligent OKR platform for strategic alignment, automated check-ins, and performance execution.</p>
+                <p>Academic OKR platform for student goals, verified achievements, and faculty mentoring.</p>
                 <div className="domain-link">
                   Explore Product <ArrowRight size={16} />
                 </div>

@@ -1122,6 +1122,131 @@
 }
 
 
+/* OKRion product page */
+.okrion-product-image {
+  height: auto;
+  object-fit: contain;
+}
+
+.okrion-title img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+.okrion-preview-placeholder {
+  width: 100%;
+  min-height: 260px;
+  padding: var(--spacing-8);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-3);
+  background-color: var(--color-bg-body);
+  border: 1px dashed var(--color-border);
+  border-radius: var(--radius-xl);
+  color: var(--color-tertiary-text);
+  text-align: center;
+}
+
+.okrion-preview-placeholder span {
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--color-secondary-text);
+}
+
+.okrion-preview-placeholder p {
+  font-size: 0.8rem;
+}
+
+.okrion-demo-section {
+  scroll-margin-top: 88px;
+}
+
+.okrion-role-card {
+  padding: var(--spacing-6);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-4);
+  background-color: var(--color-bg-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-sm);
+}
+
+.okrion-role-heading {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--spacing-2);
+}
+
+.okrion-role-heading h3 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--color-dark-text);
+}
+
+.okrion-coming-soon {
+  padding: 3px 8px;
+  border-radius: var(--radius-pill);
+  background-color: var(--color-bg-body);
+  color: var(--color-secondary-text);
+  font-size: 0.7rem;
+  font-weight: 500;
+}
+
+.okrion-role-card > p {
+  flex: 1;
+  font-size: 0.875rem;
+  line-height: 1.6;
+  color: var(--color-secondary-text);
+}
+
+.okrion-role-action {
+  justify-content: center;
+  width: 100%;
+}
+
+.okrion-role-action:disabled {
+  background-color: var(--color-bg-body);
+  color: var(--color-secondary-text);
+  border: 1px solid var(--color-border);
+  box-shadow: none;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.okrion-role-availability {
+  margin-top: calc(-1 * var(--spacing-2));
+  color: var(--color-tertiary-text);
+  font-size: 0.75rem;
+  text-align: center;
+}
+
+.okrion-capability-icon {
+  flex-shrink: 0;
+  margin-top: 2px;
+  color: var(--color-brand-blue);
+}
+
+.okrion-website-link {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-2);
+  margin-top: var(--spacing-6);
+  color: var(--color-brand-blue);
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.okrion-page a:focus-visible {
+  outline: 2px solid var(--color-brand-blue);
+  outline-offset: 4px;
+}
+
 /* WORKFLOW MODAL STYLES */
 .modal-overlay {
   position: fixed;
