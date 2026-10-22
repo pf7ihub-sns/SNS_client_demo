@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Search, ArrowRight, ShieldCheck, Lock, Store, Landmark, Umbrella, Phone } from 'lucide-react';
+import { Search, ArrowRight, ShieldCheck, Lock, Store, Landmark, ClipboardCheck, Phone } from 'lucide-react';
 import './pages.css';
 
 export default function HomePage() {
@@ -112,7 +112,7 @@ export default function HomePage() {
           {showInsurance && (
             <Link to="/domain/insurance" className="domain-card featured">
               <div className="domain-icon-wrapper">
-                <Umbrella size={32} />
+                <ClipboardCheck size={32} />
               </div>
               <h3>Insurance</h3>
               <p>AI solutions for claim rejections, validation, routing, and customer support.</p>
