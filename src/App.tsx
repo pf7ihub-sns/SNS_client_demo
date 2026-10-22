@@ -5,6 +5,7 @@ import DomainCatalogPage from './pages/DomainCatalogPage';
 import ProductDetailPage from './pages/ProductDetailPage';
 import LoginPage from './pages/LoginPage';
 import SearchResultsPage from './pages/SearchResultsPage';
+import OkrionPage from './pages/OkrionPage';
 import { AuthProvider, useAuth } from './context/AuthContext';
 
 const ProtectedRoute = () => {
@@ -39,6 +40,7 @@ export default function App() {
               <Route path="/search" element={<SearchResultsPage />} />
               <Route path="/domain/:domainId" element={<DomainCatalogPage />} />
               <Route path="/product/:productSlug" element={<ProductDetailPage />} />
+              <Route path="/products/okrion" element={<OkrionPage />} />
               {/* Catch all redirect to home */}
               <Route path="*" element={<Navigate to="/" replace />} />
             </Route>
