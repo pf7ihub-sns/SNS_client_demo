@@ -32,6 +32,15 @@ export default function TopNavigation() {
       <Link key="home" to="/" className="breadcrumb-link">Home</Link>
     ];
 
+    if (pathParts[0] === 'products' && pathParts[1] === 'okrion') {
+      breadcrumbs.push(
+        <ChevronRight key="products-separator" size={16} className="breadcrumb-separator" />,
+        <span key="products" className="breadcrumb-link">Products</span>,
+        <ChevronRight key="okrion-separator" size={16} className="breadcrumb-separator" />,
+        <span key="okrion" className="breadcrumb-current" aria-current="page">OKRion</span>
+      );
+    }
+
     if (pathParts[0] === 'domain' && pathParts[1]) {
       const domain = domains.find(d => d.id === pathParts[1]);
       if (domain) {

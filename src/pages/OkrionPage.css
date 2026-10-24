@@ -1,0 +1,566 @@
+.okr-story {
+  --okr-accent: var(--color-brand-blue);
+  --okr-ink: var(--color-dark-text);
+  --okr-muted: var(--color-secondary-text);
+  display: block;
+  color: var(--okr-ink);
+}
+/* Keep the page navigation sticky while clipping decorative overflow. */
+.main-content:has(.okr-story) {
+  min-width: 0;
+  overflow-x: clip;
+}
+.okr-story a {
+  text-decoration: none;
+}
+.okr-story section[id],
+.okr-story ol[id] {
+  scroll-margin-top: 145px;
+}
+.okr-story a:focus-visible,
+.okr-story button:focus-visible {
+  outline: 2px solid var(--okr-accent);
+  outline-offset: 4px;
+}
+.okr-solution-title img {
+  display: block;
+  width: 198px;
+  max-width: 100%;
+  height: auto;
+}
+.okr-hero-tagline {
+  font-size: 1.15rem;
+  font-weight: 600;
+  line-height: 1.5;
+  margin: 16px 0 12px;
+  color: var(--color-dark-text);
+}
+.okr-hero-preview {
+  height: auto;
+  object-fit: contain;
+  background: var(--color-page-background);
+}
+.okr-section-nav {
+  position: sticky;
+  top: 64px;
+  z-index: 15;
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  overflow-x: auto;
+  padding: 18px 24px;
+  margin-top: 24px;
+  background: var(--color-bg-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-sm);
+  font-size: 0.875rem;
+  white-space: nowrap;
+}
+.okr-section-nav span {
+  margin-right: auto;
+  color: var(--color-dark-text);
+  font-weight: 600;
+}
+.okr-section-nav a {
+  color: var(--color-secondary-text);
+}
+.okr-section-nav a:hover {
+  color: var(--okr-accent);
+}
+.okr-section {
+  padding: var(--spacing-10);
+  margin-top: var(--spacing-8);
+  background: var(--color-bg-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-2xl);
+  box-shadow: var(--shadow-sm);
+}
+.okr-story .okr-eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  color: var(--okr-accent);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin: 0 0 12px;
+}
+.okr-section h2,
+.okr-closing h2 {
+  font-size: 1.65rem;
+  line-height: 1.35;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  margin: 0 0 18px;
+}
+.okr-section p,
+.okr-closing p {
+  color: var(--okr-muted);
+  line-height: 1.7;
+}
+.okr-section-heading {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 32px;
+  margin-bottom: 32px;
+}
+.okr-section-heading h2 {
+  margin-bottom: 0;
+}
+.okr-section-heading > p {
+  font-size: 0.875rem;
+  max-width: 340px;
+}
+.okr-journey {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.okr-journey li {
+  position: relative;
+  padding-right: 16px;
+}
+.okr-journey li:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  left: 34px;
+  right: 0;
+  top: 17px;
+  height: 1px;
+  background: var(--color-lavender-accent);
+}
+.okr-step-number {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  color: white;
+  background: var(--okr-accent);
+  border-radius: 50%;
+  font-size: 0.7rem;
+  font-weight: 600;
+  margin-bottom: 16px;
+}
+.okr-journey h3 {
+  font-size: 0.9rem;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+.okr-journey p {
+  font-size: 0.8rem;
+}
+.okr-overview {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  align-items: center;
+}
+.okr-section-intro > p:not(.okr-eyebrow) {
+  font-size: 0.9rem;
+  margin-bottom: 16px;
+}
+.okr-text-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--okr-accent);
+  font-size: 0.875rem;
+  font-weight: 500;
+  margin-top: 8px;
+}
+.okr-workboard {
+  padding: 22px;
+  background: var(--color-page-background);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-xl);
+}
+.okr-board-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 20px;
+  font-size: 0.75rem;
+}
+.okr-board-heading > span:first-child {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: 500;
+}
+.okr-board-heading > span:last-child {
+  font-size: 0.65rem;
+  color: var(--color-tertiary-text);
+}
+.okr-live-dot {
+  width: 6px;
+  height: 6px;
+  background: var(--okr-accent);
+  border-radius: 50%;
+}
+.okr-record {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  background: var(--color-bg-surface);
+}
+.okr-record-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  flex-shrink: 0;
+  background: var(--color-light-blue-surface);
+  color: var(--okr-accent);
+  border-radius: var(--radius-lg);
+}
+.okr-record small {
+  display: block;
+  font-size: 0.6rem;
+  font-weight: 500;
+  color: var(--color-tertiary-text);
+  margin-bottom: 4px;
+}
+.okr-record h3 {
+  font-size: 0.875rem;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+.okr-record p {
+  font-size: 0.75rem;
+}
+.okr-record-connector {
+  height: 14px;
+  width: 1px;
+  background: var(--color-lavender-accent);
+  margin-left: 36px;
+}
+.okr-board-footer {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--okr-accent);
+  font-size: 0.7rem;
+  margin-top: 20px;
+}
+.okr-board-footer svg {
+  flex-shrink: 0;
+}
+.okr-role-layout {
+  display: grid;
+  grid-template-columns: 240px 1fr;
+  gap: 24px;
+}
+.okr-role-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.okr-role-list button {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-height: 48px;
+  padding: 12px 16px;
+  background: var(--color-bg-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  color: var(--color-secondary-text);
+  font: inherit;
+  font-size: 0.875rem;
+  text-align: left;
+  cursor: pointer;
+  transition:
+    background var(--transition-fast),
+    border-color var(--transition-fast);
+}
+.okr-role-list button > span {
+  flex: 1;
+}
+.okr-role-list button[aria-pressed="true"] {
+  color: var(--okr-accent);
+  background: var(--color-light-blue-surface);
+  border-color: var(--okr-accent);
+  font-weight: 500;
+}
+.okr-role-list button:hover {
+  border-color: var(--okr-accent);
+}
+.okr-role-detail {
+  padding: 28px;
+  background: var(--color-page-background);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-xl);
+}
+.okr-role-detail-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-lg);
+  background: var(--color-light-blue-surface);
+  color: var(--okr-accent);
+  margin-bottom: 20px;
+}
+.okr-role-detail h3 {
+  font-size: 1.4rem;
+  line-height: 1.4;
+  font-weight: 600;
+  margin-bottom: 22px;
+}
+.okr-role-detail ul {
+  display: grid;
+  gap: 12px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.okr-role-detail li {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  color: var(--okr-muted);
+  font-size: 0.875rem;
+}
+.okr-role-detail li svg {
+  flex-shrink: 0;
+  color: var(--okr-accent);
+}
+.okr-role-outcome {
+  margin-top: 24px;
+  padding-top: 18px;
+  border-top: 1px solid var(--color-border);
+}
+.okr-role-outcome span {
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--color-tertiary-text);
+}
+.okr-role-outcome p {
+  font-size: 0.8rem;
+  margin-top: 6px;
+}
+.okr-capability-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+}
+.okr-capability-grid article {
+  padding: 24px;
+  background: var(--color-bg-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-xl);
+}
+.okr-capability-grid svg {
+  color: var(--okr-accent);
+  margin-bottom: 18px;
+}
+.okr-capability-grid h3 {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+.okr-capability-grid p {
+  font-size: 0.875rem;
+}
+.okr-ai-heading {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  align-items: end;
+  margin-bottom: 30px;
+}
+.okr-ai-heading h2 {
+  margin: 0;
+}
+.okr-ai-heading > p {
+  font-size: 0.875rem;
+}
+.okr-ai-flow {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
+}
+.okr-ai-flow li {
+  border: 1px solid var(--color-border);
+  border-top: 3px solid var(--okr-accent);
+  border-radius: var(--radius-lg);
+  background: var(--color-page-background);
+  padding: 20px;
+}
+.okr-ai-flow li > span {
+  color: var(--okr-accent);
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+.okr-ai-flow h3 {
+  font-size: 0.95rem;
+  font-weight: 600;
+  margin: 14px 0 10px;
+}
+.okr-ai-flow p {
+  font-size: 0.8rem;
+}
+.okr-ai-note {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 20px;
+  margin-top: 24px;
+  background: var(--color-light-blue-surface);
+  border-radius: var(--radius-lg);
+}
+.okr-ai-note > svg {
+  flex-shrink: 0;
+  color: var(--okr-accent);
+}
+.okr-ai-note strong {
+  display: block;
+  font-size: 0.875rem;
+  font-weight: 600;
+  margin-bottom: 5px;
+}
+.okr-ai-note p {
+  font-size: 0.8rem;
+}
+.okr-closing {
+  margin-top: var(--spacing-8);
+  padding: 40px 28px;
+  text-align: center;
+  background: var(--color-bg-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-2xl);
+  box-shadow: var(--shadow-sm);
+}
+.okr-closing .okr-eyebrow {
+  justify-content: center;
+}
+.okr-closing > p:not(.okr-eyebrow) {
+  max-width: 640px;
+  margin: 0 auto 24px;
+  font-size: 0.95rem;
+}
+.okr-back-top {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  color: var(--color-secondary-text);
+  font-size: 0.8rem;
+  margin-top: 20px;
+}
+@media (max-width: 1100px) {
+  .okr-section-heading {
+    gap: 20px;
+  }
+  .okr-overview {
+    gap: 24px;
+  }
+  .okr-role-layout {
+    grid-template-columns: 200px 1fr;
+  }
+  .okr-section-nav {
+    gap: 18px;
+  }
+}
+@media (max-width: 900px) {
+  .okr-section-heading {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 14px;
+  }
+  .okr-section-heading > p {
+    max-width: none;
+  }
+  .okr-journey {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 26px 0;
+  }
+  .okr-journey li:nth-child(3)::after {
+    display: none;
+  }
+  .okr-overview {
+    grid-template-columns: 1fr;
+  }
+  .okr-ai-flow {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .okr-ai-heading {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+  .okr-capability-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+@media (max-width: 760px) {
+  .okr-section {
+    padding: 24px;
+  }
+  .okr-section h2,
+  .okr-closing h2 {
+    font-size: 1.4rem;
+  }
+  .okr-section-nav {
+    gap: 20px;
+    padding: 16px;
+  }
+  .okr-section-nav > span {
+    display: none;
+  }
+  .okr-role-layout {
+    grid-template-columns: 1fr;
+  }
+  .okr-role-list {
+    flex-direction: row;
+    overflow-x: auto;
+    padding: 4px 3px 12px;
+  }
+  .okr-role-list button {
+    flex-shrink: 0;
+    min-height: 55px;
+  }
+  .okr-role-list button > svg:last-child {
+    display: none;
+  }
+  .okr-role-detail {
+    padding: 24px;
+  }
+}
+@media (max-width: 440px) {
+  .okr-journey {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 24px 12px;
+  }
+  .okr-journey li::after {
+    display: none;
+  }
+  .okr-capability-grid,
+  .okr-ai-flow {
+    grid-template-columns: 1fr;
+  }
+  .okr-section {
+    padding: 20px;
+  }
+  .okr-solution-title img {
+    width: 170px;
+  }
+}
