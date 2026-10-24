@@ -57,17 +57,29 @@ export default function OkrionPage() {
           <p className="showcase-short-desc">{okrion.description}</p>
           <div className="detail-actions-row">
             <a
-              href={okrion.websiteUrl}
+              href={okrion.demoUrl}
               target="_blank"
               rel="noopener noreferrer"
               className="btn-primary-action"
             >
-              Visit Website <ArrowUpRight size={16} aria-hidden="true" />
+              Try OKRion Demo <ArrowUpRight size={16} aria-hidden="true" />
+            </a>
+            <a
+              href={okrion.websiteUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-secondary-action"
+            >
+              Official Website <ArrowUpRight size={16} aria-hidden="true" />
             </a>
             <a className="btn-secondary-action" href="#okr-workflow">
               View Workflow
             </a>
           </div>
+          <p className="okr-destination-note">
+            Try the demo at <strong>okrion.snssquare.com</strong>. Visit{" "}
+            <strong>okrion.ai</strong> for official product information.
+          </p>
         </div>
         <div className="showcase-hero-visual">
           <img
@@ -331,17 +343,27 @@ export default function OkrionPage() {
         <p className="okr-eyebrow">See the bigger picture</p>
         <h2 id="okr-closing-title">A clearer way to move forward.</h2>
         <p>
-          Discover how OKRion brings academic goals, mentoring and evidence-led
-          reviews into one connected experience.
+          Try the OKRion demo to explore the product, or visit the official
+          website to learn more about its features and academic workflows.
         </p>
-        <a
-          href={okrion.websiteUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="btn-primary-action"
-        >
-          Explore OKRion <ArrowUpRight size={16} aria-hidden="true" />
-        </a>
+        <div className="detail-actions-row okr-closing-actions">
+          <a
+            href={okrion.demoUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn-primary-action"
+          >
+            Try OKRion Demo <ArrowUpRight size={16} aria-hidden="true" />
+          </a>
+          <a
+            href={okrion.websiteUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn-secondary-action"
+          >
+            Official Website <ArrowUpRight size={16} aria-hidden="true" />
+          </a>
+        </div>
         <a href="#okr-title" className="okr-back-top">
           Back to overview <ArrowRight size={14} aria-hidden="true" />
         </a>

@@ -5,6 +5,7 @@ export interface OkrionDemoRole {
 }
 
 export interface OkrionProduct {
+  demoUrl: string;
   websiteUrl: string;
   heroImageUrl?: string;
   description: string;
@@ -14,6 +15,7 @@ export interface OkrionProduct {
 }
 
 export const okrion: OkrionProduct = {
+  demoUrl: "https://okrion.snssquare.com/",
   websiteUrl: "https://okrion.ai/",
   heroImageUrl: "/images/okrion/placeholder.svg",
   description:

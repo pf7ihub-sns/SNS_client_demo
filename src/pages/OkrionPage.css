@@ -40,6 +40,18 @@
   object-fit: contain;
   background: var(--color-page-background);
 }
+.okr-destination-note {
+  margin-top: 16px;
+  color: var(--okr-muted);
+  font-size: 0.8rem;
+  line-height: 1.6;
+}
+.okr-destination-note strong {
+  font-weight: 500;
+}
+.okr-closing-actions {
+  justify-content: center;
+}
 .okr-section-nav {
   position: sticky;
   top: 64px;
