@@ -52,34 +52,6 @@
 .okr-closing-actions {
   justify-content: center;
 }
-.okr-section-nav {
-  position: sticky;
-  top: 64px;
-  z-index: 15;
-  display: flex;
-  align-items: center;
-  gap: 24px;
-  overflow-x: auto;
-  padding: 18px 24px;
-  margin-top: 24px;
-  background: var(--color-bg-surface);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-xl);
-  box-shadow: var(--shadow-sm);
-  font-size: 0.875rem;
-  white-space: nowrap;
-}
-.okr-section-nav span {
-  margin-right: auto;
-  color: var(--color-dark-text);
-  font-weight: 600;
-}
-.okr-section-nav a {
-  color: var(--color-secondary-text);
-}
-.okr-section-nav a:hover {
-  color: var(--okr-accent);
-}
 .okr-section {
   padding: var(--spacing-10);
   margin-top: var(--spacing-8);
@@ -489,9 +461,6 @@
   .okr-role-layout {
     grid-template-columns: 200px 1fr;
   }
-  .okr-section-nav {
-    gap: 18px;
-  }
 }
 @media (max-width: 900px) {
   .okr-section-heading {
@@ -530,13 +499,6 @@
   .okr-section h2,
   .okr-closing h2 {
     font-size: 1.4rem;
-  }
-  .okr-section-nav {
-    gap: 20px;
-    padding: 16px;
-  }
-  .okr-section-nav > span {
-    display: none;
   }
   .okr-role-layout {
     grid-template-columns: 1fr;

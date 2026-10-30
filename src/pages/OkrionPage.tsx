@@ -89,14 +89,6 @@ export default function OkrionPage() {
           />
         </div>
       </section>
-      <nav className="okr-section-nav" aria-label="Explore OKRion">
-        <span>Explore OKRion</span>
-        <a href="#okr-workflow">Workflow</a>
-        <a href="#okr-overview">The experience</a>
-        <a href="#okr-roles">Who it helps</a>
-        <a href="#okr-capabilities">Capabilities</a>
-        <a href="#okr-ai">AI & review</a>
-      </nav>
       <section
         className="okr-section okr-workflow-section"
         aria-labelledby="okr-workflow-title"
