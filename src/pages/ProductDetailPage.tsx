@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useParams, Navigate, useLocation } from 'react-router-dom';
-import { PlayCircle, ExternalLink, CheckCircle2, FolderOpen } from 'lucide-react';
+import { PlayCircle, ExternalLink, CheckCircle2, FolderOpen, Presentation } from 'lucide-react';
 import { products } from '../data/mockData';
 import { useAuth } from '../context/AuthContext';
 import RestrictedAccessModal from '../components/auth/RestrictedAccessModal';
@@ -92,8 +92,23 @@ export default function ProductDetailPage() {
                 <span>View Resources</span>
               </a>
             )}
+            {product.deckUrl !== undefined && (
+              <button
+                onClick={(e) => {
+                  if (!isInternal) {
+                    e.preventDefault();
+                    setRestrictedResource('Deck');
+                  } else if (product.deckUrl) {
+                    window.open(product.deckUrl, '_blank', 'noopener,noreferrer');
+                  }
+                }}
+                className="btn-secondary-action"
+              >
+                <Presentation size={16} /> <span>View Deck</span> {!isInternal && <span className="lock-indicator">🔒</span>}
+              </button>
+            )}
             {product.workflowSteps && product.workflowSteps.length > 0 && (
-              <button 
+              <button
                 className="btn-secondary-action" 
                 onClick={handleViewWorkflow}
               >

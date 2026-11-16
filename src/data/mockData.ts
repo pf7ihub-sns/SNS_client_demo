@@ -74,6 +74,14 @@ export const domains: Domain[] = [
     featured: true,
     products: ['telecom-01'],
   },
+  {
+    id: 'edtech',
+    name: 'EdTech',
+    description: 'AI-powered solutions for education, learning management, and campus operations.',
+    iconName: 'GraduationCap',
+    featured: true,
+    products: ['edtech-01', 'edtech-02'],
+  },
 ];
 
 export const products: Product[] = [
@@ -368,7 +376,7 @@ export const products: Product[] = [
       'Recommend next-best actions to optimize working capital'
     ],
     workflowImageUrl: wcWorkflow,
-    siteUrl: 'https://finance.snssquare.com/organisation/login',
+    siteUrl: 'https://finance.snssquare.com/login',
   },
   {
     id: 'finance-02',
@@ -568,6 +576,85 @@ export const products: Product[] = [
       'Provide AI-powered resolution guidance and preventive actions'
     ],
     siteUrl: 'https://telecom.snssquare.com/'
+  },
+  {
+    id: 'edtech-01',
+    name: 'OKRion',
+    slug: 'okrion',
+    domainId: 'edtech',
+    category: 'Performance Management',
+    shortDescription: 'AI-powered institutional performance and outcome management platform that automates OKR tracking, approval workflows, and AI-driven verification of student and faculty achievements for accreditation readiness.',
+    useCase: 'AI-powered institutional performance and outcome management platform that automates OKR tracking, approval workflows, and AI-driven verification of student and faculty achievements for accreditation readiness.',
+    descriptionPoints: [
+      'Digitizes student, faculty, department, and institutional OKRs with monthly cycles, progress tracking, and credit calculation.',
+      'Maps each institution\'s own hierarchy, from student to super admin, with role-based visibility and hierarchical approvals.',
+      'Dynamic approval engine supports configurable, institution-specific workflows with role-based routing and month-wise configurations.',
+      'AI verification uses OCR, LLM vision models, and API integrations to validate LinkedIn profiles, certifications, hackathons, placements, admissions, and business cards.',
+      'Coverage sampling allows full, percentage, ratio, or random IQAC verification to reduce manual effort while maintaining audit compliance.',
+      'Real-time analytics and an accreditation evidence repository give students, faculty, HODs, IQAC, and management institution-wide visibility.'
+    ],
+    keyCapabilities: [
+      'Student, Faculty and Institutional OKRs',
+      'Nexus Hierarchy Management',
+      'Dynamic Approval Engine',
+      'LinkedIn and Certification Verification',
+      'Hackathon, Placement and Admission Verification',
+      'Coverage Sampling Engine',
+      'M-OKR Faculty Credit System',
+      'Student Extended Profile and Governance',
+      'Publications, Events and Jobs Management',
+      'Scholarship Reporting',
+      'Global Exemption Management',
+      'Play Guide Learning Content',
+      'Control Center with Automatic, Manual and Hybrid Modes',
+      'Reporting and Accreditation Analytics',
+      'Role-Based Access Control and Audit Trails'
+    ],
+    status: 'Coming Soon',
+    featured: true,
+    isNew: true,
+    tags: ['EdTech', 'OKR', 'Accreditation', 'AI'],
+    siteUrl: 'https://okrion.snssquare.com',
+    deckUrl: 'https://drive.google.com/file/d/18jQQcTVW0tdlzCWGVfztH051RyU5YJXa/view?usp=drive_link'
+  },
+  {
+    id: 'edtech-02',
+    name: 'DragonSuite',
+    slug: 'dragonsuite',
+    domainId: 'edtech',
+    category: 'Learning Platform',
+    shortDescription: 'AI-assisted student learning platform that guides every student through an assigned roadmap, approved learning content, practice, assessments, and skill-gap closure, with Dragon AI support along the way.',
+    useCase: 'AI-assisted student learning platform that guides every student through an assigned roadmap, approved learning content, practice, assessments, and skill-gap closure, with Dragon AI support along the way.',
+    descriptionPoints: [
+      'Gives students a complete guided learning journey: sign up, follow the assigned roadmap, learn, practise, take assessments, close skill gaps, and get help.',
+      'Dragon GPS delivers a programme-assigned roadmap with standard milestones, progress tracking, and estimated completion, with one active roadmap per student.',
+      'Learning content is pre-approved and centrally created for consistent quality; learning modules are generated only when content does not already exist, then reused for everyone.',
+      'Dragon Prep supports competitive exam preparation with approved practice sets, adaptive practice, and pattern-based learning, with AI-assisted learning on selected activities.',
+      'Dragon Arena runs MCQ assessments from an approved question bank across Easy, Medium, and Hard levels and multiple rounds, with coding evaluation for technical programmes.',
+      'Dragon AI answers questions about the student\'s own goal, roadmap, skill gaps, certificates, profile, and notifications, guides navigation, and offers page tips, with protection against message spam.'
+    ],
+    keyCapabilities: [
+      'Verified Student Onboarding',
+      'Profile Completeness Score',
+      'Verified Credentials View',
+      'Resume Generation',
+      'Dragon GPS Assigned Roadmap',
+      'Milestone and ETA Tracking',
+      'Approved Learning Content',
+      'Dragon Prep Exam Practice',
+      'Adaptive Practice',
+      'Dragon Arena MCQ Assessments',
+      'Coding Evaluation',
+      'Skill-Gap Analysis and Skill Quiz',
+      'Dragon AI Student Assistant',
+      'Ticket-Based Support'
+    ],
+    status: 'Coming Soon',
+    featured: true,
+    isNew: true,
+    tags: ['EdTech', 'Learning', 'Assessment', 'AI'],
+    siteUrl: '',
+    deckUrl: ''
   }
 ];
 

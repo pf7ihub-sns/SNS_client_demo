@@ -28,4 +28,5 @@ export interface Product {
   workflowSteps?: string[];
   workflowImageUrl?: string;
   resourcesUrl?: string;
+  deckUrl?: string;
 }

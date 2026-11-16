@@ -1,5 +1,5 @@
 import { Link, useLocation } from 'react-router-dom';
-import { LayoutDashboard, ShieldCheck, ChevronRight, Menu, Lock, Store, Landmark, ClipboardCheck, Phone } from 'lucide-react';
+import { LayoutDashboard, ShieldCheck, ChevronRight, Menu, Lock, Store, Landmark, ClipboardCheck, Phone, GraduationCap } from 'lucide-react';
 import { useState } from 'react';
 
 export default function Sidebar() {
@@ -103,6 +103,16 @@ export default function Sidebar() {
               <Phone size={20} />
               <span>Telecom</span>
               {isActive('/domain/telecom') && <ChevronRight size={16} className="ml-auto" />}
+            </Link>
+
+            <Link
+              to="/domain/edtech"
+              className={`nav-item ${isActive('/domain/edtech') ? 'active' : ''}`}
+              onClick={() => setIsMobileOpen(false)}
+            >
+              <GraduationCap size={20} />
+              <span>EdTech</span>
+              {isActive('/domain/edtech') && <ChevronRight size={16} className="ml-auto" />}
             </Link>
           </div>
         </nav>
