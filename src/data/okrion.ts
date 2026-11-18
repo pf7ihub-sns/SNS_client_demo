@@ -7,6 +7,7 @@ export interface OkrionDemoRole {
 export interface OkrionProduct {
   demoUrl: string;
   websiteUrl: string;
+  deckUrl: string;
   heroImageUrl?: string;
   description: string;
   capabilities: string[];
@@ -17,6 +18,8 @@ export interface OkrionProduct {
 export const okrion: OkrionProduct = {
   demoUrl: "https://okrion.snssquare.com/",
   websiteUrl: "https://okrion.ai/",
+  deckUrl:
+    "https://drive.google.com/file/d/18jQQcTVW0tdlzCWGVfztH051RyU5YJXa/view?usp=drive_link",
   heroImageUrl: "/images/okrion/placeholder.svg",
   description:
     "Connect academic goals, evidence, reviews and institutional progress in one shared workflow. Give every role a clear next step, from the first submission to the final report.",

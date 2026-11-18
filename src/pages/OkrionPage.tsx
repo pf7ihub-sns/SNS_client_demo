@@ -72,8 +72,13 @@ export default function OkrionPage() {
             >
               Official Website <ArrowUpRight size={16} aria-hidden="true" />
             </a>
-            <a className="btn-secondary-action" href="#okr-workflow">
-              View Workflow
+            <a
+              href={okrion.deckUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-secondary-action"
+            >
+              View Deck
             </a>
           </div>
           <p className="okr-destination-note">

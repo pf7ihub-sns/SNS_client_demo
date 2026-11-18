@@ -583,8 +583,8 @@ export const products: Product[] = [
     slug: 'okrion',
     domainId: 'edtech',
     category: 'Performance Management',
-    shortDescription: 'AI-powered institutional performance and outcome management platform that automates OKR tracking, approval workflows, and AI-driven verification of student and faculty achievements for accreditation readiness.',
-    useCase: 'AI-powered institutional performance and outcome management platform that automates OKR tracking, approval workflows, and AI-driven verification of student and faculty achievements for accreditation readiness.',
+    shortDescription: 'Connect academic goals, evidence, reviews and progress in one workflow, with AI-assisted verification for NAAC, NBA and NIRF.',
+    useCase: 'Connect academic goals, evidence, reviews and progress in one workflow, with AI-assisted verification for NAAC, NBA and NIRF.',
     descriptionPoints: [
       'Digitizes student, faculty, department, and institutional OKRs with monthly cycles, progress tracking, and credit calculation.',
       'Maps each institution\'s own hierarchy, from student to super admin, with role-based visibility and hierarchical approvals.',
@@ -613,7 +613,7 @@ export const products: Product[] = [
     status: 'Coming Soon',
     featured: true,
     isNew: true,
-    tags: ['EdTech', 'OKR', 'Accreditation', 'AI'],
+    tags: ['EdTech', 'Academic OKRs', 'Accreditation', 'AI Review'],
     siteUrl: 'https://okrion.snssquare.com',
     deckUrl: 'https://drive.google.com/file/d/18jQQcTVW0tdlzCWGVfztH051RyU5YJXa/view?usp=drive_link'
   },
@@ -622,9 +622,9 @@ export const products: Product[] = [
     name: 'DragonSuite',
     slug: 'dragonsuite',
     domainId: 'edtech',
-    category: 'Learning Platform',
-    shortDescription: 'AI-assisted student learning platform that guides every student through an assigned roadmap, approved learning content, practice, assessments, and skill-gap closure, with Dragon AI support along the way.',
-    useCase: 'AI-assisted student learning platform that guides every student through an assigned roadmap, approved learning content, practice, assessments, and skill-gap closure, with Dragon AI support along the way.',
+    category: 'Talent Platform',
+    shortDescription: 'Agentic AI talent platform taking students from practice to verified hire, with adaptive assessments and proctoring.',
+    useCase: 'Agentic AI talent platform taking students from practice to verified hire, with adaptive assessments and proctoring.',
     descriptionPoints: [
       'Gives students a complete guided learning journey: sign up, follow the assigned roadmap, learn, practise, take assessments, close skill gaps, and get help.',
       'Dragon GPS delivers a programme-assigned roadmap with standard milestones, progress tracking, and estimated completion, with one active roadmap per student.',
@@ -652,7 +652,7 @@ export const products: Product[] = [
     status: 'Coming Soon',
     featured: true,
     isNew: true,
-    tags: ['EdTech', 'Learning', 'Assessment', 'AI'],
+    tags: ['EdTech', 'Talent', 'Assessment', 'Agentic AI'],
     siteUrl: '',
     deckUrl: ''
   }
