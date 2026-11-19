@@ -1,8 +1,9 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import type { CSSProperties, FormEvent, KeyboardEvent, MouseEvent } from 'react';
 import { dragonSuiteSprite } from '../data/dragonSuiteIcons';
-import { MODS, J, LAYERS, FW, ROLES, heroScript, deckUrl, esc } from '../data/dragonSuite';
+import { MODS, J, LAYERS, FW, ROLES, deckUrl, esc } from '../data/dragonSuite';
 import type { DsMsg } from '../data/dragonSuite';
+import { HeroFlow } from './DragonHeroFlow';
 import './DragonSuitePage.css';
 
 /* =========================================================
@@ -16,6 +17,8 @@ type ToastFn = (msg: string) => void;
 // Leave both empty and the form honestly says it is not connected yet.
 const DEMO_ENDPOINT = '';
 const DEMO_EMAIL = '';
+
+const THEME_KEY = 'dragon-suite-theme';
 
 // stable object so React does not re-assign the sprite's innerHTML on every render
 const SPRITE_HTML = { __html: dragonSuiteSprite };
@@ -800,6 +803,10 @@ export default function DragonSuitePage() {
   const tipRef = useRef<HTMLDivElement>(null);
   const [reduce] = useState(prefersReducedMotion);
   const [modalOpen, setModalOpen] = useState(false);
+  // light / dark theme for the whole Dragon Suite page, remembered between visits
+  const [dark, setDark] = useState(() => {
+    try { return localStorage.getItem(THEME_KEY) === 'dark'; } catch { return false; }
+  });
   const [toastState, setToastState] = useState({ msg: '', show: false });
   const toastTimer = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
 
@@ -809,6 +816,14 @@ export default function DragonSuitePage() {
     toastTimer.current = setTimeout(() => setToastState((s) => ({ ...s, show: false })), 2600);
   }, []);
   useEffect(() => () => clearTimeout(toastTimer.current), []);
+
+  const toggleTheme = useCallback(() => {
+    setDark((d) => {
+      const next = !d;
+      try { localStorage.setItem(THEME_KEY, next ? 'dark' : 'light'); } catch { /* storage unavailable: the theme still switches */ }
+      return next;
+    });
+  }, []);
 
   const closeModal = useCallback(() => setModalOpen(false), []);
 
@@ -864,8 +879,10 @@ export default function DragonSuitePage() {
       const x = Math.max(10, Math.min(innerWidth - t.width - 10, cx - t.width / 2));
       let y = r.top - t.height - 12;
       if (y < 10) y = r.bottom + 12;
-      tip.style.left = x + 'px';
-      tip.style.top = y + 'px';
+      // x/y are viewport px; the page is zoomed, so convert to the tooltip's own px
+      const k = t.width / tip.offsetWidth || 1;
+      tip.style.left = x / k + 'px';
+      tip.style.top = y / k + 'px';
     };
     const show = (el: HTMLElement, e?: globalThis.MouseEvent) => {
       tipEl = el;
@@ -912,7 +929,7 @@ export default function DragonSuitePage() {
   };
 
   return (
-    <div className="dragon-suite" ref={rootRef} onClick={onRootClick}>
+    <div className="dragon-suite" data-theme={dark ? 'dark' : 'light'} ref={rootRef} onClick={onRootClick}>
       <svg width="0" height="0" style={{ position: 'absolute' }} aria-hidden="true" focusable="false">
         <defs dangerouslySetInnerHTML={SPRITE_HTML} />
       </svg>
@@ -933,7 +950,7 @@ export default function DragonSuitePage() {
             </div>
           </div>
 
-          <HeroChat reduce={reduce} toast={toast} />
+          <HeroFlow reduce={reduce} dark={dark} onToggleTheme={toggleTheme} />
         </div>
 
         <div className="hero-foot">
@@ -1048,22 +1065,6 @@ export default function DragonSuitePage() {
 
       <div className="tip" id="tip" role="tooltip" ref={tipRef}></div>
       <div className={`toast${toastState.show ? ' show' : ''}`} id="toast" role="status"><Icon n="check" /><span>{toastState.msg}</span></div>
-    </div>
-  );
-}
-
-/* Hero: floating score tags + the looping Dragon AI sample chat */
-function HeroChat({ reduce, toast }: { reduce: boolean; toast: ToastFn }) {
-  const { bodyRef, shown } = useChatPlayer(heroScript, reduce);
-  return (
-    <div style={{ position: 'relative' }}>
-      <div className="float-tag t1"><Icon n="shield-check" /><div>Trust Score 92<small>Proctored · verified</small></div></div>
-      <div className="float-tag t2"><Icon n="award" /><div>Dragon Score 86<small>Elite eligible (85+)</small></div></div>
-      <div className="chatwin" aria-label="Illustrative Dragon AI conversation">
-        <div className="chat-bar"><span className="dots"><i></i><i></i><i></i></span><Icon n="sparkles" style={{ fontSize: 15 }} />Dragon AI<span className="live">Sample</span></div>
-        <ChatBody id="heroChat" bodyRef={bodyRef} shown={shown} toast={toast} />
-        <div className="chat-input"><Icon n="message" />Ask Dragon AI anything…<span className="send"><Icon n="send" /></span></div>
-      </div>
     </div>
   );
 }
