@@ -945,7 +945,7 @@ export default function DragonSuitePage() {
             <p className="lead">Dragon Suite is an agentic AI talent platform for companies and HR teams, placement officers and colleges, and the students and job seekers they work with. It takes talent from first practice question to verified hire, and acts at every step along the way.</p>
             <div className="hero-cta">
               <a className="btn btn-light" href="https://ds.1000dragons.ai" target="_blank" rel="noopener noreferrer">Try Dragon Suite<Icon n="arrow-up-right" /></a>
-              <a className="btn btn-ghost" href="https://www.1000dragons.ai/">Visit Website<Icon n="arrow-right" /></a>
+              <a className="btn btn-ghost" href="https://www.1000dragons.ai/" target="_blank" rel="noopener noreferrer">Visit Website<Icon n="arrow-right" /></a>
               <a className="btn btn-ghost" href={deckUrl} target="_blank" rel="noopener noreferrer">View Deck<Icon n="arrow-up-right" /></a>
             </div>
           </div>
