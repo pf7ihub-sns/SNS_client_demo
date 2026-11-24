@@ -10,8 +10,8 @@ pipeline {
            AWS
         =============================== */
         AWS_REGION = "us-east-1"
-        S3_BUCKET = "grcmanage.snssquare.com"
-        CLOUDFRONT_DISTRIBUTION_ID = "E21GX2OMDX42L8"
+        S3_BUCKET = "shub.snssquare.com"
+        CLOUDFRONT_DISTRIBUTION_ID = "EWMHFSOKASQSU"
         VITE_API_BASE_URL = "https://apishub.snssquare.com/"
     }
 
