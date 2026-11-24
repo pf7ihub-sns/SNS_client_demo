@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import type { CSSProperties, FormEvent, KeyboardEvent, MouseEvent } from 'react';
+import { createPortal } from 'react-dom';
 import { dragonSuiteSprite } from '../data/dragonSuiteIcons';
 import { MODS, J, LAYERS, FW, ROLES, deckUrl, esc } from '../data/dragonSuite';
 import type { DsMsg } from '../data/dragonSuite';
@@ -229,11 +230,16 @@ function ExploreBar() {
 
   useEffect(() => {
     const spy = () => {
+      // the current section is the last one whose top has passed the middle of the screen
+      // (a fixed 200px line left the bar blank while a section filled most of the view)
+      const line = window.innerHeight * 0.5;
       let c = -1;
       EXPLORE_LINKS.forEach(([id], i) => {
         const s = document.getElementById(id);
-        if (s && s.getBoundingClientRect().top <= 200) c = i;
+        if (s && s.getBoundingClientRect().top <= line) c = i;
       });
+      // at the very bottom the last link wins even if the final section is short
+      if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 4) c = EXPLORE_LINKS.length - 1;
       setCur(c);
       const nav = navRef.current;
       const act = nav?.querySelectorAll('a')[c] as HTMLElement | undefined;
@@ -663,7 +669,6 @@ function AgenticSection({ reduce, toast }: { reduce: boolean; toast: ToastFn }) 
         <b>Works where your teams already are:</b>
         <div className="chips">
           <span className="chip"><Icon n="link" />LinkedIn</span>
-          <span className="chip"><Icon n="briefcase" />Naukri</span>
           <span className="chip"><Icon n="message" />Slack</span>
           <span className="chip"><Icon n="phone" />WhatsApp</span>
           <span className="chip"><Icon n="git" />GitHub</span>
@@ -1060,11 +1065,19 @@ export default function DragonSuitePage() {
         <a className="back-link" href="#top">Back to overview<Icon n="arrow-up" /></a>
       </section>
 
-      {/* DEMO MODAL (prototype: nothing is sent anywhere) */}
-      <DemoModal open={modalOpen} onClose={closeModal} />
+      {/* Demo dialog, tooltip and toast are fixed-position overlays. They are rendered into <body> (inside a
+          .dragon-suite wrapper so the styles and theme still apply) so they sit above the hub's sidebar and top bar
+          and are centred on the whole window instead of being clipped under the hub chrome. */}
+      {createPortal(
+        <div className="dragon-suite ds-portal" data-theme={dark ? 'dark' : 'light'}>
+          {/* DEMO MODAL (prototype: nothing is sent anywhere) */}
+          <DemoModal open={modalOpen} onClose={closeModal} />
 
-      <div className="tip" id="tip" role="tooltip" ref={tipRef}></div>
-      <div className={`toast${toastState.show ? ' show' : ''}`} id="toast" role="status"><Icon n="check" /><span>{toastState.msg}</span></div>
+          <div className="tip" id="tip" role="tooltip" ref={tipRef}></div>
+          <div className={`toast${toastState.show ? ' show' : ''}`} id="toast" role="status"><Icon n="check" /><span>{toastState.msg}</span></div>
+        </div>,
+        document.body,
+      )}
     </div>
   );
 }
